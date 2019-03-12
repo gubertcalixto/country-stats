@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "backend"
+		}
+	],
+	"settings": {
+		"files.autoSave": "onFocusChange",
+		"files.autoSaveDelay": 750,
+		"typescriptHero.imports.organizeOnSave": true,
+		"workbench.iconTheme": "material-icon-theme",
+		"editor.formatOnSave": true
+	}
+}
