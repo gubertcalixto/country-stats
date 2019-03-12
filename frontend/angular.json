@@ -5,7 +5,7 @@
   "projects": {
     "country-stats": {
       "root": "apps/country-stats",
-      "sourceRoot": "apps/country-stats/src",
+      "sourceRoot": "apps/country-stats",
       "projectType": "application",
       "prefix": "cs",
       "schematics": {
@@ -18,16 +18,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/country-stats",
-            "index": "apps/country-stats/src/index.html",
-            "main": "apps/country-stats/src/main.ts",
-            "polyfills": "apps/country-stats/src/polyfills.ts",
-            "tsConfig": "apps/country-stats/src/tsconfig.app.json",
+            "index": "apps/country-stats/index.html",
+            "main": "apps/country-stats/main.ts",
+            "polyfills": "apps/country-stats/polyfills.ts",
+            "tsConfig": "apps/country-stats/tsconfig.app.json",
             "assets": [
-              "apps/country-stats/src/favicon.ico",
+              "apps/country-stats/favicon.ico",
               "apps/country-stats/src/assets"
             ],
             "styles": [
-              "apps/country-stats/src/styles.scss"
+              "apps/country-stats/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -79,16 +79,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "apps/country-stats/src/test.ts",
-            "polyfills": "apps/country-stats/src/polyfills.ts",
-            "tsConfig": "apps/country-stats/src/tsconfig.spec.json",
-            "karmaConfig": "apps/country-stats/src/karma.conf.js",
+            "main": "apps/country-stats/test.ts",
+            "polyfills": "apps/country-stats/polyfills.ts",
+            "tsConfig": "apps/country-stats/tsconfig.spec.json",
+            "karmaConfig": "apps/country-stats/karma.conf.js",
             "styles": [
-              "apps/country-stats/src/styles.scss"
+              "apps/country-stats/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "apps/country-stats/src/favicon.ico",
+              "apps/country-stats/favicon.ico",
               "apps/country-stats/src/assets"
             ]
           }
@@ -97,8 +97,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/country-stats/src/tsconfig.app.json",
-              "apps/country-stats/src/tsconfig.spec.json"
+              "apps/country-stats/tsconfig.app.json",
+              "apps/country-stats/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
