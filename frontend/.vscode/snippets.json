@@ -1,0 +1,14 @@
+{
+    "html": {
+        "snippets": {
+            "teste": "<span{teste}"
+        }
+    },
+    "css": {
+        "snippets": {
+            "hdeep": "host() ::ng-deep",
+            "hd": "host() ::ng-deep",
+            "hostd": "host() ::ng-deep"
+        }
+    }
+}
