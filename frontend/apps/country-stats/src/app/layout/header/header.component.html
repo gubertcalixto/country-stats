@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <img src="#" alt="logo">
+    <span></span>
+  </div>
+  <div>
+    <div *ngIf="logged">
+      <img [src]="logged.image" alt="profile">
+      <button mat-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <span>
+          <mat-icon>dialpad</mat-icon> {{logged.name}}
+        </span>
+        <button mat-menu-item>Meu Perfil</button>
+        <button mat-menu-item>Sair</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="!logged">
+      <mat-button-toggle-group>
+        <mat-button-toggle value="signin">Entrar</mat-button-toggle>
+        <mat-button-toggle value="signup">Cadastrar</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+</div>
