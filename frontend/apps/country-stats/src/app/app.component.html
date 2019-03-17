@@ -1,10 +1,35 @@
-<cs-header></cs-header>
-<mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side">
-        Sidenav content
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-<cs-footer></cs-footer>
+<mat-drawer-container autosize [hasBackdrop]="true" fxFlex="100" fxLayoutAlign="stretch stretch">
+    <mat-drawer #drawer mode="over">
+        <div fxLayout="column" fxLayoutAlign="center center" class="sidenav-menu py-8">
+            <a fxFlex="100" (click)="drawer.toggle()" [routerLink]="['/']">
+                <img src="assets/images/logo.svg" alt="logo">
+            </a>
+            <mat-list>
+                <mat-list-item [routerLink]="['home']" routerLinkActive (click)="drawer.toggle()"
+                    class="cursor-pointer">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <h4 mat-line>{{l('Home')}}</h4>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item [routerLink]="['main/settings']" routerLinkActive (click)="drawer.toggle()"
+                    class="cursor-pointer">
+                    <mat-icon mat-list-icon>settings</mat-icon>
+                    <h4 mat-line>{{l('Settings')}}</h4>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item [routerLink]="['admin']" routerLinkActive (click)="drawer.toggle()"
+                    class="cursor-pointer">
+                    <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
+                    <h4 mat-line>{{l('Admin')}}</h4>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content fxFlex="100" fxLayout="column" class="p-8">
+        <cs-header fxFlex="initial" (sidebarToggle)="drawer.toggle()"></cs-header>
+        <div fxFlex="100" class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <cs-footer fxFlex="initial"></cs-footer>
+    </mat-drawer-content>
+</mat-drawer-container>
