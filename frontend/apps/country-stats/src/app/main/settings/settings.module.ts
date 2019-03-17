@@ -1,16 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatTabsModule } from '@angular/material';
 
-import { ProfileModule } from './profile/profile.module';
-import { SettingsComponent } from './settings.component';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsRoutingModule } from './settings-routing.module';
+import { SettingsComponent } from './settings.component';
 
 @NgModule({
-  declarations: [SettingsComponent, PreferencesComponent],
+  declarations: [SettingsComponent, ProfileComponent, PreferencesComponent],
   imports: [
     CommonModule,
-    ProfileModule
+    MatTabsModule,
+    SettingsRoutingModule
   ],
   exports: [SettingsComponent]
 })
-export class SettingsModule { }
+export class SettingsModule {
+}

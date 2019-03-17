@@ -18,10 +18,8 @@
       </mat-menu>
     </div>
     <div *ngIf="!logged">
-      <mat-button-toggle-group>
-        <mat-button-toggle value="signin">Entrar</mat-button-toggle>
-        <mat-button-toggle value="signup">Cadastrar</mat-button-toggle>
-      </mat-button-toggle-group>
+      <button mat-flat-button color="primary" (click)="signup()">Entrar</button>
+      <button mat-flat-button (click)="signin()">Cadastrar</button>
     </div>
   </div>
 </div>

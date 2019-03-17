@@ -1,3 +1,9 @@
-<p>
-  settings works!
-</p>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link [routerLink]="preferences" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{l('preferences')}}
+  </a>
+  <a mat-tab-link [routerLink]="profile" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{l('profile')}}
+  </a>
+</nav>
+<router-outlet></router-outlet>
