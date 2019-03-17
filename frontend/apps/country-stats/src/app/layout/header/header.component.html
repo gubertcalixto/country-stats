@@ -1,0 +1,27 @@
+<div class="pt-0 p-8" fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <a [routerLink]="['/']">
+      <img src="assets/images/logo.svg" alt="logo">
+    </a>
+    <span></span>
+  </div>
+  <div>
+    <div *ngIf="logged">
+      <img [src]="logged.image" alt="profile">
+      <button mat-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <span>
+          <mat-icon>dialpad</mat-icon> {{logged.name}}
+        </span>
+        <button mat-menu-item class="mr-4">{{l('Meu Perfil')}}</button>
+        <button mat-menu-item class="ml-4">{{l('Sair')}}</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="!logged">
+      <button mat-flat-button class="mr-4" color="primary" (click)="signin()">{{l('Sign In')}}</button>
+      <button mat-flat-button class="ml-4" (click)="signup()">{{l('Sign Up')}}</button>
+    </div>
+  </div>
+</div>

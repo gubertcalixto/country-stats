@@ -5,7 +5,7 @@
   "projects": {
     "country-stats": {
       "root": "apps/country-stats",
-      "sourceRoot": "apps/country-stats",
+      "sourceRoot": "apps/country-stats/src",
       "projectType": "application",
       "prefix": "cs",
       "schematics": {
@@ -23,11 +23,12 @@
             "polyfills": "apps/country-stats/polyfills.ts",
             "tsConfig": "apps/country-stats/tsconfig.app.json",
             "assets": [
-              "apps/country-stats/favicon.ico",
+              "apps/country-stats/src/favicon.ico",
               "apps/country-stats/src/assets"
             ],
             "styles": [
-              "apps/country-stats/styles.scss"
+              "apps/country-stats/styles.scss",
+              "apps/country-stats/src/assets/css/basic-style.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -136,5 +137,10 @@
       }
     }
   },
-  "defaultProject": "country-stats"
+  "defaultProject": "country-stats",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

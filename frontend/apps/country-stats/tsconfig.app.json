@@ -5,6 +5,7 @@
     "types": [],
     "experimentalDecorators": true,
     "allowJs": true,
+    "target": "es5",
     "lib": [
       "es2018",
       "dom"
