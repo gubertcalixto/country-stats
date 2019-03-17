@@ -1,24 +1,22 @@
 <mat-drawer-container autosize [hasBackdrop]="true" fxFlex="100" fxLayoutAlign="stretch stretch">
     <mat-drawer #drawer mode="over">
         <div fxLayout="column" fxLayoutAlign="center center" class="sidenav-menu py-8">
-            <a fxFlex="100" (click)="drawer.toggle()" [routerLink]="['/']">
+            <a fxFlex="100" (click)="drawer.toggle()" routerLink="/">
                 <img src="assets/images/logo.svg" alt="logo">
             </a>
             <mat-list>
-                <mat-list-item [routerLink]="['home']" routerLinkActive (click)="drawer.toggle()"
-                    class="cursor-pointer">
+                <mat-list-item routerLink="home" routerLinkActive (click)="drawer.toggle()" class="cursor-pointer">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <h4 mat-line>{{l('Home')}}</h4>
                 </mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item [routerLink]="['main/settings']" routerLinkActive (click)="drawer.toggle()"
+                <mat-list-item routerLink="main/settings" routerLinkActive (click)="drawer.toggle()"
                     class="cursor-pointer">
                     <mat-icon mat-list-icon>settings</mat-icon>
                     <h4 mat-line>{{l('Settings')}}</h4>
                 </mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item [routerLink]="['admin']" routerLinkActive (click)="drawer.toggle()"
-                    class="cursor-pointer">
+                <mat-list-item routerLink="admin" routerLinkActive (click)="drawer.toggle()" class="cursor-pointer">
                     <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
                     <h4 mat-line>{{l('Admin')}}</h4>
                 </mat-list-item>

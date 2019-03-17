@@ -4,18 +4,18 @@
       <button (click)="onToggleSidebar()" fxShow.lt-lg fxHide mat-button>
         <mat-icon>menu</mat-icon>
       </button>
-      <a [routerLink]="['/']">
+      <a routerLink="/">
         <img src="assets/images/logo.svg" alt="logo">
       </a>
     </div>
     <nav fxFlex="auto" fxHide.lt-lg mat-tab-nav-bar>
-      <a mat-tab-link [routerLink]="['home']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      <a mat-tab-link routerLink="home" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
         {{l('Home')}}
       </a>
-      <a mat-tab-link [routerLink]="['main/settings']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      <a mat-tab-link routerLink="main/settings" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
         {{l('Settings')}}
       </a>
-      <a mat-tab-link [routerLink]="['admin']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      <a mat-tab-link routerLink="admin" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
         {{l('Admin')}}
       </a>
     </nav>
