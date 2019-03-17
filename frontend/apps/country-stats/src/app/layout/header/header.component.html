@@ -1,6 +1,8 @@
-<div fxLayout="row" fxLayoutAlign="space-between center">
+<div class="pt-0 p-8" fxLayout="row" fxLayoutAlign="space-between center">
   <div>
-    <img src="#" alt="logo">
+    <a [routerLink]="['/']">
+      <img src="assets/images/logo.svg" alt="logo">
+    </a>
     <span></span>
   </div>
   <div>
@@ -13,15 +15,13 @@
         <span>
           <mat-icon>dialpad</mat-icon> {{logged.name}}
         </span>
-        <button mat-menu-item>Meu Perfil</button>
-        <button mat-menu-item>Sair</button>
+        <button mat-menu-item class="mr-4">{{l('Meu Perfil')}}</button>
+        <button mat-menu-item class="ml-4">{{l('Sair')}}</button>
       </mat-menu>
     </div>
     <div *ngIf="!logged">
-      <mat-button-toggle-group>
-        <mat-button-toggle value="signin">Entrar</mat-button-toggle>
-        <mat-button-toggle value="signup">Cadastrar</mat-button-toggle>
-      </mat-button-toggle-group>
+      <button mat-flat-button class="mr-4" color="primary" (click)="signin()">{{l('Sign In')}}</button>
+      <button mat-flat-button class="ml-4" (click)="signup()">{{l('Sign Up')}}</button>
     </div>
   </div>
 </div>

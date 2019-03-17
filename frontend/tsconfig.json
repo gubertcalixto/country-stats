@@ -3,6 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/*": [
+        "./apps/country-stats/src/app"
+      ],
+    },
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
