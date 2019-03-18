@@ -25,7 +25,7 @@
     </mat-drawer>
     <mat-drawer-content fxFlex="100" fxLayout="column" class="p-8">
         <cs-header fxFlex="initial" (sidebarToggle)="drawer.toggle()"></cs-header>
-        <div fxFlex="100" class="content">
+        <div fxLayout="row" fxFlex="100" class="content">
             <router-outlet></router-outlet>
         </div>
         <cs-footer fxFlex="initial"></cs-footer>
