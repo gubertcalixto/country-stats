@@ -1,3 +1,18 @@
-<p>
-  home works!
-</p>
+<div fxFlex="initial" fxLayoutAlign="flex-end center">
+  <button mat-button (click)="widgetDrawer.toggle()">
+    <mat-icon>settings</mat-icon>
+  </button>
+</div>
+<mat-drawer-container autosize [hasBackdrop]="false" fxFlex="auto" fxLayoutAlign="stretch stretch">
+  <mat-drawer #widgetDrawer mode="side" position="end">
+    <div fxLayout="column" class="p-8">
+      <cs-widgets-settings></cs-widgets-settings>
+    </div>
+  </mat-drawer>
+  <!--  -->
+  <mat-drawer-content fxFlex="100" fxLayout="column" class="p-8">
+    <div fxFlex="100" class="content">
+      widgets
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
