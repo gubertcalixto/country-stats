@@ -1,0 +1,14 @@
+:host ::ng-deep{
+    ngx-charts-chart, ngx-charts-chart > .ngx-charts-outer{
+        display: flex;
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .pie-label{
+        fill: #ffffff;
+    }
+    .card-content{
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

@@ -1,0 +1,34 @@
+<mat-card style="max-height: 500px" fxLayout="column">
+  <mat-card-header fxFlex="initial">
+    <mat-card-title>{{l('statisticsSummary')}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex="auto" fxLayout="row wrap" class="card-content">
+    <!-- Population Chart -->
+    <div fxLayout="column" fxFlex="33.33" fxFlex.lt-sm="100">
+      <div fxFlex="auto">
+        <ngx-charts-pie-chart doughnut="true" tooltipDisabled="true" labels="true" [scheme]="populationColorScheme"
+          [results]="populationData">
+        </ngx-charts-pie-chart>
+      </div>
+      <h3 class="text-center">{{l('Population Chart')}}</h3>
+    </div>
+    <!-- Cost Chart -->
+    <div fxLayout="column" fxFlex="33.33" fxFlex.lt-sm="100">
+      <div fxFlex="auto">
+        <ngx-charts-pie-chart doughnut="true" tooltipDisabled="true" labels="true" [scheme]="costColorScheme"
+          [results]="costData">
+        </ngx-charts-pie-chart>
+      </div>
+      <h3 class="text-center">{{l('Cost Chart')}}</h3>
+    </div>
+    <!-- Tourism Chart -->
+    <div fxLayout="column" fxFlex="33.33" fxFlex.lt-sm="100">
+      <div fxFlex="auto">
+        <ngx-charts-pie-chart doughnut="true" tooltipDisabled="true" labels="true" [scheme]="tourismColorScheme"
+          [results]="tourismData">
+        </ngx-charts-pie-chart>
+      </div>
+      <h3 class="text-center">{{l('Tourism Chart')}}</h3>
+    </div>
+  </mat-card-content>
+</mat-card>
