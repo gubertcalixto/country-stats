@@ -22,6 +22,39 @@ body {
 .bold {
     font-weight: bold;
 }
+.overflow-auto{
+  overflow: auto;
+}
+.overflow-scroll{
+  overflow: scroll;
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+.overflow-x-auto{
+  overflow: auto;
+}
+.overflow-x-scroll{
+  overflow: scroll;
+}
+.overflow-x-hidden{
+  overflow: hidden;
+}
+.overflow-y-auto{
+  overflow: auto;
+}
+.overflow-y-scroll{
+  overflow: scroll;
+}
+.overflow-y-hidden{
+  overflow: hidden;
+}
+a{
+  color: #3e9bff;
+}
+a:active{
+  color: #3d85d2;
+}
 
 // SCROLLBAR
 ::-webkit-scrollbar {
