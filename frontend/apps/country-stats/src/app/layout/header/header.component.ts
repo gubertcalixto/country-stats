@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CsBase } from '../../shared/cs-base.component';
 
@@ -10,6 +10,7 @@ import { CsBase } from '../../shared/cs-base.component';
 export class HeaderComponent extends CsBase implements OnInit {
 
   logged: any;
+  @Output() sidebarToggle = new EventEmitter<any>();
 
   constructor() {
     super();
@@ -20,6 +21,10 @@ export class HeaderComponent extends CsBase implements OnInit {
 
   signup() {
 
+  }
+
+  onToggleSidebar() {
+    this.sidebarToggle.emit();
   }
 
 }

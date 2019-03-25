@@ -1,0 +1,43 @@
+<h2 class="mt-0">{{l('Configurações de Widgets')}}</h2>
+<form [formGroup]="form">
+  <mat-checkbox formControlName="enabledDragWidgets">{{l('Habilitar alterações de layout')}}</mat-checkbox>
+</form>
+<h5>{{l('Definição de Layout')}}</h5>
+<div>
+  <div fxFlex="100" fxFlex.gt-md="50"
+    [matTooltip]="widgetsLayout.rows.length >= layoutRowLimit ? l('Maximum rows reached') : l('Add Row')">
+    <button mat-button fxFlex="100" [disabled]="widgetsLayout.rows.length >= layoutRowLimit" (click)="addLayoutRow()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+  <div fxFlex="100" fxFlex.gt-md="50"
+    [matTooltip]="widgetsLayout.rows.length <= 1 ? l('At least 1 row is required') : l('Remove Row')">
+    <button mat-button fxFlex="100" [disabled]="widgetsLayout.rows.length <= 1" (click)="removeLayoutRow()">
+      <mat-icon>remove_circle</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="layout-row" *ngFor="let row of widgetsLayout.rows; index as rowIndex">
+  <mat-divider class="my-8" *ngIf="rowIndex !== 0"></mat-divider>
+  <div fxLayout="row">
+    <div class="layout-row-boundary py-8" fxFlex="auto" fxLayoutAlign="space-evenly center" cdkDropList
+      cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropColumn(rowIndex, $event)">
+      <div *ngFor="let col of row.cols" cdkDrag cdkDragBoundary=".layout-row-boundary" class="layout-col"
+        fxLayoutAlign="center center">
+        <span class="h-100-p" fxLayoutAlign="center center">{{col + 1}}</span>
+      </div>
+    </div>
+    <div fxFlex="initial">
+      <div [matTooltip]="row.cols.length >= layoutColLimit ? l('Maximum cols per row reached') : l('Add Column')">
+        <button mat-button [disabled]="row.cols.length >= layoutColLimit" (click)="alterLayoutRowColumns(rowIndex)">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </div>
+      <div [matTooltip]="row.cols.length <= 1 ? l('At least 1 col is required per row') : l('Remove Column')">
+        <button mat-button [disabled]="row.cols.length <= 1" (click)="alterLayoutRowColumns(rowIndex, -1)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

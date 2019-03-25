@@ -1,4 +1,15 @@
 @import "~@angular/material/prebuilt-themes/purple-green.css";
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    place-content: stretch;
+    margin: 0;
+    min-height: 100%;
+}
 *{
     font-family: 'Roboto', sans-serif;
 }
@@ -11,4 +22,72 @@
 .bold {
     font-weight: bold;
 }
+.overflow-auto{
+  overflow: auto;
+}
+.overflow-scroll{
+  overflow: scroll;
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+.overflow-x-auto{
+  overflow: auto;
+}
+.overflow-x-scroll{
+  overflow: scroll;
+}
+.overflow-x-hidden{
+  overflow: hidden;
+}
+.overflow-y-auto{
+  overflow: auto;
+}
+.overflow-y-scroll{
+  overflow: scroll;
+}
+.overflow-y-hidden{
+  overflow: hidden;
+}
+a{
+  color: #3e9bff;
+}
+a:active{
+  color: #3d85d2;
+}
+
+// SCROLLBAR
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 2px;
+    height: 2px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #808080;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #808080;
+  }
+  ::-webkit-scrollbar-track {
+    background: #c0c0c0;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: #c0c0c0;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: #c0c0c0;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 
