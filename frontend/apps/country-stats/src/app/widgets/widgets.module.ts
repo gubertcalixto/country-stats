@@ -9,15 +9,21 @@ import {
   MatCheckboxModule,
   MatDividerModule,
   MatIconModule,
+  MatListModule,
   MatTooltipModule,
 } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { CountryStatsSummaryComponent } from './country-stats-summary/country-stats-summary.component';
+import { CountryVaccinationComponent } from './country-vaccination/country-vaccination.component';
 import { WidgetsSettingsComponent } from './widgets-settings/widgets-settings.component';
 
 @NgModule({
-  declarations: [WidgetsSettingsComponent, CountryStatsSummaryComponent],
+  declarations: [
+    WidgetsSettingsComponent,
+    CountryStatsSummaryComponent,
+    CountryVaccinationComponent
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -30,8 +36,13 @@ import { WidgetsSettingsComponent } from './widgets-settings/widgets-settings.co
     MatDividerModule,
     MatTooltipModule,
     DragDropModule,
+    MatListModule,
     NgxChartsModule
   ],
-  exports: [WidgetsSettingsComponent, CountryStatsSummaryComponent]
+  exports: [
+    WidgetsSettingsComponent,
+    CountryStatsSummaryComponent,
+    CountryVaccinationComponent
+  ]
 })
 export class WidgetsModule { }
