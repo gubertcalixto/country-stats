@@ -1,0 +1,21 @@
+<mat-card style="max-height: 500px" fxLayout="column">
+    <mat-card-header fxFlex="initial">
+      <mat-card-title>{{l('Vacinas')}}</mat-card-title>
+      <mat-card-subtitle>{{l('Saiba as vacinas que você deve tomar para este país')}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxFlex="auto" fxLayout="row wrap" class="card-content">
+        <mat-selection-list fxFlex="100">
+            <mat-divider></mat-divider>
+            <mat-list-option>
+              <mat-icon mat-list-icon class="f-red">warning</mat-icon>
+              <p mat-line>{{l('Sarampo')}}</p>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option>
+                <mat-icon mat-list-icon class="f-blue">info</mat-icon>
+              <p mat-line>{{l('Gripe Suína')}}</p>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+        </mat-selection-list>
+    </mat-card-content>
+  </mat-card>

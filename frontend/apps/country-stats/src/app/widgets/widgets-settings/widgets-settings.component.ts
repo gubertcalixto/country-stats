@@ -2,7 +2,8 @@ import { CdkDragSortEvent, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { CsBase } from '../../../../shared/cs-base.component';
+import { CsBase } from '../../shared/cs-base.component';
+
 
 @Component({
   selector: 'cs-widgets-settings',

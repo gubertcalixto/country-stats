@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CsBase } from '../../../../shared/cs-base.component';
+import { CsBase } from '../../shared/cs-base.component';
 
 @Component({
   selector: 'cs-country-stats-summary',
