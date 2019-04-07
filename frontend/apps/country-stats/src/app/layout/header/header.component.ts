@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CsBase } from '../../shared/cs-base.component';
 
@@ -7,20 +8,25 @@ import { CsBase } from '../../shared/cs-base.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent extends CsBase implements OnInit {
-
+export class HeaderComponent extends CsBase {
   logged: any;
-  @Output() sidebarToggle = new EventEmitter<any>();
+  @Output() sidebarToggle = new EventEmitter<any>(); navLinks: any[];
 
-  constructor() {
+  constructor(@Inject(Router) private router: Router) {
     super();
+    this.navLinks = [
+      { label: this.l('Home'), link: '/main/home' },
+      { label: this.l('Settings'), link: '/main/settings' },
+      { label: this.l('Admin'), link: '/admin' },
+    ];
   }
 
-  ngOnInit() {
+  signin() {
+    this.router.navigateByUrl('/account/login');
   }
 
   signup() {
-
+    this.router.navigate(['/', 'account/', 'signup']);
   }
 
   onToggleSidebar() {

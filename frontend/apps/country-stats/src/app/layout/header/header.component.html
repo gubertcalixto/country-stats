@@ -1,22 +1,17 @@
-<div class="pt-0 p-8" fxLayout="row" fxLayoutAlign="space-between center">
+<div class="py-4 px-8" fxLayout="row" fxLayoutAlign="space-between center">
   <div fxFlex="auto" fxLayoutAlign="space-between center">
     <div fxFlex="initial" fxLayoutAlign="flex-start center">
-      <button (click)="onToggleSidebar()" fxShow.lt-lg fxHide mat-button>
+      <button (click)="onToggleSidebar()" fxShow.lt-md fxHide mat-button>
         <mat-icon>menu</mat-icon>
       </button>
       <a routerLink="/" title="Home">
         <img src="assets/images/logo.svg" alt="logo">
       </a>
     </div>
-    <nav fxFlex="auto" fxHide.lt-lg mat-tab-nav-bar>
-      <a mat-tab-link routerLink="home" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-        {{l('Home')}}
-      </a>
-      <a mat-tab-link routerLink="main/settings" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-        {{l('Settings')}}
-      </a>
-      <a mat-tab-link routerLink="admin" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-        {{l('Admin')}}
+    <nav mat-tab-nav-bar fxFlex="auto" fxHide.lt-md>
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+        {{l(link.label)}}
       </a>
     </nav>
   </div>
