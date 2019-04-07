@@ -1,0 +1,21 @@
+:host{
+    color: #ffffff;
+
+    .logo-name{
+        cursor: context-menu;
+    }
+    .divider:after{
+        content: '|';
+    }
+    a, .divider{
+        color: gainsboro;
+        text-decoration: none;
+        font-weight: 800;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    .social-img-filter{
+        filter: brightness(0) invert(1);
+    }
+}
