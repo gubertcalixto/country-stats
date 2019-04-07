@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CsBase } from './shared/cs-base.component';
 
@@ -9,10 +10,10 @@ import { CsBase } from './shared/cs-base.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends CsBase implements OnInit {
-  constructor() {
+  constructor(@Inject(Router) private router: Router) {
     super();
   }
-  
+
   ngOnInit(): void {
     // TODO RANDOM COUNTRY IMAGE
     // https://www.npmjs.com/package/node-shutter-search
@@ -21,5 +22,15 @@ export class AppComponent extends CsBase implements OnInit {
     //   console.log(data);
     // });
   }
-  
+
+
+  signin() {
+    this.router.navigateByUrl('/account/login');
+  }
+
+  signup() {
+
+    this.router.navigateByUrl('/account/signup');
+  }
+
 }
