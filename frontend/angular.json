@@ -28,7 +28,8 @@
             ],
             "styles": [
               "apps/country-stats/styles.scss",
-              "apps/country-stats/src/assets/css/basic-style.css"
+              "apps/country-stats/src/assets/css/basic-style.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -85,7 +86,9 @@
             "tsConfig": "apps/country-stats/tsconfig.spec.json",
             "karmaConfig": "apps/country-stats/karma.conf.js",
             "styles": [
-              "apps/country-stats/styles.scss"
+              "apps/country-stats/styles.scss",
+              "apps/country-stats/src/assets/css/basic-style.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [],
             "assets": [

@@ -12,20 +12,24 @@ import {
   MatListModule,
   MatTooltipModule,
 } from '@angular/material';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { CountryStatsSummaryComponent } from './country-stats-summary/country-stats-summary.component';
 import { CountryVaccinationComponent } from './country-vaccination/country-vaccination.component';
+import { MapWidgetComponent } from './map-widget/map-widget.component';
 import { WidgetsSettingsComponent } from './widgets-settings/widgets-settings.component';
 
 @NgModule({
   declarations: [
     WidgetsSettingsComponent,
     CountryStatsSummaryComponent,
-    CountryVaccinationComponent
+    CountryVaccinationComponent,
+    MapWidgetComponent
   ],
   imports: [
     CommonModule,
+    LeafletModule.forRoot(),
     MatIconModule,
     MatButtonModule,
     MatCardModule,
@@ -42,7 +46,8 @@ import { WidgetsSettingsComponent } from './widgets-settings/widgets-settings.co
   exports: [
     WidgetsSettingsComponent,
     CountryStatsSummaryComponent,
-    CountryVaccinationComponent
+    CountryVaccinationComponent,
+    MapWidgetComponent
   ]
 })
 export class WidgetsModule { }
