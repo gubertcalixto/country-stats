@@ -1,0 +1,2 @@
+C:\Users\Luan Michel Ducate\Desktop\CountriesGo\CountriesGo.Domain\obj\Debug\CountriesGo.Domain.csprojAssemblyReference.cache
+C:\Users\Luan Michel Ducate\Desktop\CountriesGo\CountriesGo.Domain\obj\Debug\CountriesGo.Domain.csproj.CoreCompileInputs.cache
