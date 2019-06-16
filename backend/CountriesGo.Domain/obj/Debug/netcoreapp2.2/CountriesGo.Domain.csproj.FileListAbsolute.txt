@@ -1,0 +1,9 @@
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\bin\Debug\netcoreapp2.2\CountriesGo.Domain.deps.json
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\bin\Debug\netcoreapp2.2\CountriesGo.Domain.dll
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\bin\Debug\netcoreapp2.2\CountriesGo.Domain.pdb
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.csprojAssemblyReference.cache
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.AssemblyInfoInputs.cache
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.AssemblyInfo.cs
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.dll
+C:\Users\Calixto\Desktop\country-stats\backend\CountriesGo.Domain\obj\Debug\netcoreapp2.2\CountriesGo.Domain.pdb
