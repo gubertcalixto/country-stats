@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Classes" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CountriesGo.Infrastructure\CountriesGo.Infrastructure.csproj" />
+      <ProjectReference Include="..\CountriesGo.Reading\CountriesGo.Reading.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="8.1.1" />
+      <PackageReference Include="Rebus.ServiceProvider" Version="4.0.2" />
+    </ItemGroup>
+
+</Project>
