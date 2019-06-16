@@ -1,8 +1,9 @@
-﻿using CountriesGo.Domain.Entities.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CountriesGo.Domain.Entities
 {
-    public class LocalizacaoPais : EntityBase
+    [Table("Localizacoes")]
+    public class LocalizacaoPais: BaseEntity
     {
         public string Continente { get; set; }
         public string RegiaoContinental { get; set; }

@@ -1,8 +1,10 @@
-﻿using CountriesGo.Domain.Entities.Base;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CountriesGo.Domain.Entities
 {
-    public class Pais : EntityBase
+    [Table("Paises")]
+    public class Pais: BaseEntity, IBaseUpdatableEntity
     {
         public string Nome { get; set; }
         public string NomeCompleto { get; set; }
@@ -18,6 +20,6 @@ namespace CountriesGo.Domain.Entities
         public Telefone Telefone { get; set; }
         public Vacina[] Vacina { get; set; }
         public Eletricidade Eletricidade { get; set; }
+        public DateTime LastTimeUpdated { get; set; }
     }
 }
-

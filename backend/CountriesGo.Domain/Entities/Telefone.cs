@@ -1,7 +1,9 @@
-﻿using CountriesGo.Domain.Entities.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CountriesGo.Domain.Entities
 {
-    public class Telefone : EntityBase
+    [Table("Telefones")]
+    public class Telefone: BaseEntity
     {
         public string CodigoTelefone { get; set; }
         public string TelefoneBombeiros { get; set; }

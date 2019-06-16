@@ -1,8 +1,9 @@
-﻿using CountriesGo.Domain.Entities.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CountriesGo.Domain.Entities
 {
-    public class Linguagem : EntityBase
+    [Table("Linguagens")]
+    public class Linguagem: BaseEntity
     {
         public string Nome { get; set; }
         public string Simbolo { get; set; }
