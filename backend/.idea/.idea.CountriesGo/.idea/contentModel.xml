@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Calixto\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Calixto\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_CountriesGo.-416495267.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Calixto\Desktop\country-stats\backend" t="IncludeFlat">
+      <e p="CountriesGo.Domain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CountriesGo.Domain.csproj" t="IncludeRecursive" />
+        <e p="Entities" t="Include">
+          <e p="BaseEntity.cs" t="Include" />
+          <e p="Eletricidade.cs" t="Include" />
+          <e p="IBaseUpdatableEntity.cs" t="Include" />
+          <e p="Linguagem.cs" t="Include" />
+          <e p="Localizacao.cs" t="Include" />
+          <e p="Moeda.cs" t="Include" />
+          <e p="Pais.cs" t="Include" />
+          <e p="Telefone.cs" t="Include" />
+          <e p="TentativasLogin.cs" t="Include" />
+          <e p="Usuario.cs" t="Include" />
+          <e p="Vacina.cs" t="Include" />
+        </e>
+        <e p="Events" t="Include">
+          <e p="UpdateCountryEvent.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="CountriesGo.Domain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Utils" t="Include">
+          <e p="UtilsResources.cs" t="Include" />
+        </e>
+      </e>
+      <e p="CountriesGo.Host" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Classes" t="Include" />
+        <e p="Config" t="Include">
+          <e p="DatabaseConfig.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="CountryController.cs" t="Include" />
+        </e>
+        <e p="CountriesGo.Host.csproj" t="IncludeRecursive" />
+        <e p="Dtos" t="Include">
+          <e p="GetAllPaisRequest.cs" t="Include" />
+          <e p="GetCountryFilterInput.cs" t="Include" />
+          <e p="PaisView.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="ICountryController.cs" t="Include" />
+          <e p="IFilteredRequest.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="CountriesGo.Host.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="CountriesGo.Infrastructure" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CountriesGo.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="DefaultContext.cs" t="Include" />
+        <e p="Migrations" t="Include">
+          <e p="20190609231051_Initial.cs" t="Include" />
+          <e p="20190609231051_Initial.Designer.cs" t="Include" />
+          <e p="20190616021745_More_Properties_Country_Entity.cs" t="Include" />
+          <e p="20190616021745_More_Properties_Country_Entity.Designer.cs" t="Include" />
+          <e p="DefaultContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="CountriesGo.Infrastructure.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scrips" t="Include">
+          <e p="update.ps1" t="Include" />
+        </e>
+      </e>
+      <e p="CountriesGo.Reading" t="IncludeRecursive">
+        <e p="APIRequesters" t="Include">
+          <e p="CountryIoReader.cs" t="Include" />
+          <e p="TravelBriefingReader.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Classes" t="Include">
+          <e p="CountryIo" t="Include">
+            <e p="CountryIoGetCapitalRequest.cs" t="Include" />
+          </e>
+          <e p="TravelBriefing" t="Include">
+            <e p="GetAllRequest.cs" t="Include" />
+            <e p="TravelBriefingGetRequest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="CountriesGo.Reading.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="CountriesGo.Reading.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="CountriesGo.sln" t="IncludeFlat" />
+      <e p="CountriesGo.Treatment" t="IncludeRecursive">
+        <e p="AutoMapperConfig" t="Include">
+          <e p="TravelBriefingAutoMapper.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Classes" t="Include" />
+        <e p="CountriesGo.Treatment.csproj" t="IncludeRecursive" />
+        <e p="Handlers" t="Include">
+          <e p="CountryIOHandler.cs" t="Include" />
+          <e p="TravelBriefingHandler.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="CountriesGo.Treatment.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
