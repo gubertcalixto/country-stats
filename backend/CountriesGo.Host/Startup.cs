@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Reflection;
+using AutoMapper;
 using CountriesGo.Domain.Events;
 using CountriesGo.Infrastructure;
+using CountriesGo.Treatment;
 using CountriesGo.Treatment.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,12 +17,11 @@ namespace CountriesGo.Host
 {
     public class Startup
     {
+        private IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,12 +31,14 @@ namespace CountriesGo.Host
             
             
             // Register handlers 
-            services.AutoRegisterHandlersFromAssemblyOf<TravelBriefingHandler>();
+            services
+                .AutoRegisterHandlersFromAssemblyOf<DatabaseInteractor>();
 
             // Configure and register Rebus
             services.AddRebus(configure => configure
-                .Transport(t => t.UseInMemoryTransport(new InMemNetwork(), "Messages"))
-                .Routing(r => r.TypeBased().MapAssemblyOf<UpdateCountryEvent>("Messages")));
+                .Transport(t => t.UseInMemoryTransport(new InMemNetwork(), "CountryEvents"))
+                .Routing(r => r.TypeBased().MapAssemblyOf<UpdateCountryEvent>("CountryEvents"))
+            );
 
             services.AddMvc();
             services.AddDbContext<DefaultContext>();

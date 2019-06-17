@@ -6,15 +6,15 @@ namespace CountriesGo.Domain.Entities
     [Table("Eletricidade")]
     public class Eletricidade: BaseEntity
     {
-        public EletricidadeVoltagem[] Voltagens { get; set; }
-        public List<EletricidadeFrequencia> Frequencias { get; set; }
-        public PlugTomada[] PlugsTomadas { get; set; }
+        public EletricidadeVoltagem Voltagens { get; set; }
+        public EletricidadeFrequencia Frequencias { get; set; }
+        public List<PlugTomada> PlugsTomadas { get; set; }
 
     }
 
     public class EletricidadeVoltagem: BaseEntity
     {
-        public int NumeroVoltagem { get; set; }
+        public string NumeroVoltagem { get; set; }
     }
 
     public class EletricidadeFrequencia: BaseEntity

@@ -6,7 +6,6 @@ namespace CountriesGo.Domain.Entities
     public class Linguagem: BaseEntity
     {
         public string Nome { get; set; }
-        public string Simbolo { get; set; }
         public double Porcentagem { get; set; }
         public bool Oficial { get; set; }
     }

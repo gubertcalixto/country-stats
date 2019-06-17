@@ -17,7 +17,7 @@ namespace CountriesGo.Reading.Classes.TravelBriefing
         public TravelBriefingCurrency Currency { get; set; }
         public List<TravelBriefingNeighbor> Neighbors { get; set; }
     }
-    public abstract class TravelBriefingNames
+    public class TravelBriefingNames
     {
         public string Name { get; set; }
         public string Full { get; set; }
@@ -26,53 +26,58 @@ namespace CountriesGo.Reading.Classes.TravelBriefing
         public string Continent { get; set; }
     }
 
-    public abstract class TravelBriefingMaps
+    public class TravelBriefingMaps
     {
         public string Lat { get; set; }
         public string Long { get; set; }
         public string Zoom { get; set; }
     }
 
-    public abstract class TravelBriefingTimezone
+    public class TravelBriefingTimezone
     {
         public string Name { get; set; }
     }
 
-    public abstract class TravelBriefingLanguage
+    public class TravelBriefingLanguage
     {
         public string Language { get; set; }
         public string Official { get; set; }
+
+        public bool isOfficial()
+        {
+            return Official.Trim().ToLower() == "yes";
+        }
     }
 
-    public abstract class TravelBriefingElectricity
+    public class TravelBriefingElectricity
     {
         public string Voltage { get; set; }
         public string Frequency { get; set; }
         public List<string> Plugs { get; set; }
     }
 
-    public abstract class TravelBriefingTelephone
+    public class TravelBriefingTelephone
     {
-        public string CallingCode { get; set; }
+        public string Calling_Code { get; set; }
         public string Police { get; set; }
         public string Ambulance { get; set; }
         public string Fire { get; set; }
     }
 
-    public abstract class TravelBriefingWater
+    public class TravelBriefingWater
     {
         public string Short { get; set; }
         public string Full { get; set; }
     }
 
-    public abstract class TravelBriefingVaccination
+    public class TravelBriefingVaccination
     {
         public string Name { get; set; }
         public string Message { get; set; }
     }
 
 
-    public abstract class TravelBriefingCurrency
+    public class TravelBriefingCurrency
     {
         public string Name { get; set; }
         public string Code { get; set; }
@@ -80,7 +85,7 @@ namespace CountriesGo.Reading.Classes.TravelBriefing
         public string Rate { get; set; }
     }
 
-    public abstract class TravelBriefingNeighbor
+    public class TravelBriefingNeighbor
     {
         public string Id { get; set; }
         public string Name { get; set; }

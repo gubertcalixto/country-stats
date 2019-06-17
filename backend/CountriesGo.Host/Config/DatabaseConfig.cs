@@ -6,9 +6,13 @@ namespace CountriesGo.Host.Config
     {
         public static int TimeToUpdateOffset { get; set; } = 15;
 
-        public static bool IsNotUpdated(DateTime date)
+        public static bool IsNotUpdated(DateTime? creationDate, DateTime? updateDate)
         {
-            return DateTime.Now.AddDays(TimeToUpdateOffset) > date;
+            if (creationDate == null)
+                return true;
+            if (updateDate == null)
+                return DateTime.Now.AddDays(TimeToUpdateOffset) > creationDate.Value;
+            return DateTime.Now.AddDays(TimeToUpdateOffset) > updateDate.Value;
         }
     }
 }

@@ -8,14 +8,27 @@ namespace CountriesGo.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Eletricidade",
+                name: "EletricidadeFrequencia",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false)
+                    Id = table.Column<Guid>(nullable: false),
+                    FrequenciaValor = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eletricidade", x => x.Id);
+                    table.PrimaryKey("PK_EletricidadeFrequencia", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EletricidadeVoltagem",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    NumeroVoltagem = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EletricidadeVoltagem", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -26,9 +39,9 @@ namespace CountriesGo.Infrastructure.Migrations
                     Continente = table.Column<string>(nullable: true),
                     RegiaoContinental = table.Column<string>(nullable: true),
                     Capital = table.Column<string>(nullable: true),
-                    Latitude = table.Column<long>(nullable: false),
-                    Longitude = table.Column<long>(nullable: false),
-                    Zoom = table.Column<int>(nullable: false),
+                    Latitude = table.Column<string>(nullable: true),
+                    Longitude = table.Column<string>(nullable: true),
+                    Zoom = table.Column<string>(nullable: true),
                     FusoHorario = table.Column<string>(nullable: true),
                     Observacao = table.Column<string>(nullable: true),
                     LocalizacaoPaisId = table.Column<Guid>(nullable: true)
@@ -80,99 +93,26 @@ namespace CountriesGo.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EletricidadeFrequencia",
+                name: "Eletricidade",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    FrequenciaValor = table.Column<int>(nullable: false),
-                    EletricidadeId = table.Column<Guid>(nullable: true)
+                    VoltagensId = table.Column<Guid>(nullable: true),
+                    FrequenciasId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EletricidadeFrequencia", x => x.Id);
+                    table.PrimaryKey("PK_Eletricidade", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EletricidadeFrequencia_Eletricidade_EletricidadeId",
-                        column: x => x.EletricidadeId,
-                        principalTable: "Eletricidade",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EletricidadeVoltagem",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    NumeroVoltagem = table.Column<int>(nullable: false),
-                    EletricidadeId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EletricidadeVoltagem", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EletricidadeVoltagem_Eletricidade_EletricidadeId",
-                        column: x => x.EletricidadeId,
-                        principalTable: "Eletricidade",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PlugTomada",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    TipoTomada = table.Column<string>(nullable: true),
-                    ImagemTomada = table.Column<string>(nullable: true),
-                    EletricidadeId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlugTomada", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PlugTomada_Eletricidade_EletricidadeId",
-                        column: x => x.EletricidadeId,
-                        principalTable: "Eletricidade",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Paises",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    NomeCompleto = table.Column<string>(nullable: true),
-                    NomeNormalizado = table.Column<string>(nullable: true),
-                    SiglaPais2Digitos = table.Column<string>(nullable: true),
-                    SiglaPais3Digitos = table.Column<string>(nullable: true),
-                    QuantidadePopulacao = table.Column<int>(nullable: false),
-                    ImagemBandeira = table.Column<string>(nullable: true),
-                    NomenclaturaNativos = table.Column<string>(nullable: true),
-                    LocalizacaoId = table.Column<Guid>(nullable: true),
-                    TelefoneId = table.Column<Guid>(nullable: true),
-                    EletricidadeId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Paises", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Paises_Eletricidade_EletricidadeId",
-                        column: x => x.EletricidadeId,
-                        principalTable: "Eletricidade",
+                        name: "FK_Eletricidade_EletricidadeFrequencia_FrequenciasId",
+                        column: x => x.FrequenciasId,
+                        principalTable: "EletricidadeFrequencia",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Paises_Localizacoes_LocalizacaoId",
-                        column: x => x.LocalizacaoId,
-                        principalTable: "Localizacoes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Paises_Telefones_TelefoneId",
-                        column: x => x.TelefoneId,
-                        principalTable: "Telefones",
+                        name: "FK_Eletricidade_EletricidadeVoltagem_VoltagensId",
+                        column: x => x.VoltagensId,
+                        principalTable: "EletricidadeVoltagem",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -200,12 +140,73 @@ namespace CountriesGo.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Paises",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Nome = table.Column<string>(nullable: true),
+                    NomeCompleto = table.Column<string>(nullable: true),
+                    NomeNormalizado = table.Column<string>(nullable: true),
+                    SiglaPais2Digitos = table.Column<string>(nullable: true),
+                    SiglaPais3Digitos = table.Column<string>(nullable: true),
+                    QuantidadePopulacao = table.Column<int>(nullable: false),
+                    ImagemBandeira = table.Column<string>(nullable: true),
+                    NomenclaturaNativos = table.Column<string>(nullable: true),
+                    LocalizacaoId = table.Column<Guid>(nullable: true),
+                    TelefoneId = table.Column<Guid>(nullable: true),
+                    EletricidadeId = table.Column<Guid>(nullable: true),
+                    CreationTime = table.Column<DateTime>(nullable: true),
+                    LastTimeUpdated = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paises", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Paises_Eletricidade_EletricidadeId",
+                        column: x => x.EletricidadeId,
+                        principalTable: "Eletricidade",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Paises_Localizacoes_LocalizacaoId",
+                        column: x => x.LocalizacaoId,
+                        principalTable: "Localizacoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Paises_Telefones_TelefoneId",
+                        column: x => x.TelefoneId,
+                        principalTable: "Telefones",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlugTomada",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    TipoTomada = table.Column<string>(nullable: true),
+                    ImagemTomada = table.Column<string>(nullable: true),
+                    EletricidadeId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlugTomada", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PlugTomada_Eletricidade_EletricidadeId",
+                        column: x => x.EletricidadeId,
+                        principalTable: "Eletricidade",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Linguagens",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
-                    Simbolo = table.Column<string>(nullable: true),
                     Porcentagem = table.Column<double>(nullable: false),
                     Oficial = table.Column<bool>(nullable: false),
                     PaisId = table.Column<Guid>(nullable: true)
@@ -265,14 +266,14 @@ namespace CountriesGo.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EletricidadeFrequencia_EletricidadeId",
-                table: "EletricidadeFrequencia",
-                column: "EletricidadeId");
+                name: "IX_Eletricidade_FrequenciasId",
+                table: "Eletricidade",
+                column: "FrequenciasId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EletricidadeVoltagem_EletricidadeId",
-                table: "EletricidadeVoltagem",
-                column: "EletricidadeId");
+                name: "IX_Eletricidade_VoltagensId",
+                table: "Eletricidade",
+                column: "VoltagensId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Linguagens_PaisId",
@@ -323,12 +324,6 @@ namespace CountriesGo.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EletricidadeFrequencia");
-
-            migrationBuilder.DropTable(
-                name: "EletricidadeVoltagem");
-
-            migrationBuilder.DropTable(
                 name: "Linguagens");
 
             migrationBuilder.DropTable(
@@ -357,6 +352,12 @@ namespace CountriesGo.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Telefones");
+
+            migrationBuilder.DropTable(
+                name: "EletricidadeFrequencia");
+
+            migrationBuilder.DropTable(
+                name: "EletricidadeVoltagem");
         }
     }
 }

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Events;
 using CountriesGo.Domain.Utils;
 using CountriesGo.Host.Config;
@@ -35,21 +38,27 @@ namespace CountriesGo.Host.Controllers
         }
 
         [HttpGet]
-        public PaisView Get(GetCountryFilterInput filterInput)
+        public Task<PaisView> Get(GetCountryFilterInput filterInput)
         {
             // Faz a requisição ao Banco
-            var dataBaseCountry = _context.Paises.FirstOrDefault(ct => ct.Nome == filterInput.NameFilter||
-                                                              ct.SiglaPais2Digitos == filterInput.SiglaFilter ||
-                                                              ct.SiglaPais3Digitos == filterInput.SiglaFilter);
+            var dataBaseCountry = GetCountryInDatabase(filterInput);
             // Caso não exista ou esteja desatualizado, atualize no banco
-            if (dataBaseCountry == null || !DatabaseConfig.IsNotUpdated(dataBaseCountry.LastTimeUpdated))
+            if (dataBaseCountry == null || !DatabaseConfig.IsNotUpdated(dataBaseCountry.CreationTime,dataBaseCountry.LastTimeUpdated))
             {
                 // Envia para a camada de tratamento através do padrão Observable
-                _bus.Send(new UpdateCountryEvent(filterInput.NameFilter, filterInput.SiglaFilter));
-                //TODO EVENT TO UPDATE DATABASE
+                _bus.Send(new UpdateCountryEvent(filterInput.NameFilter, filterInput.SiglaFilter)).Wait();
+                dataBaseCountry = GetCountryInDatabase(filterInput);
             }
             // Retorna para o FrontEnd o resultado
-            return null;
+            var countryMapped = Mapper.Map<PaisView>(dataBaseCountry);
+            return Task.FromResult(countryMapped);
+        }
+
+        private Pais GetCountryInDatabase(GetCountryFilterInput filterInput)
+        {
+            return _context.Paises.FirstOrDefault(ct => ct.Nome == filterInput.NameFilter||
+                                                        ct.SiglaPais2Digitos == filterInput.SiglaFilter ||
+                                                        ct.SiglaPais3Digitos == filterInput.SiglaFilter);
         }
     }
 }

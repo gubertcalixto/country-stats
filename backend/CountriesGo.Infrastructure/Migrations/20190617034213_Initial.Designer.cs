@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CountriesGo.Infrastructure.Migrations
 {
     [DbContext(typeof(DefaultContext))]
-    [Migration("20190616021745_More_Properties_Country_Entity")]
-    partial class More_Properties_Country_Entity
+    [Migration("20190617034213_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,15 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<Guid?>("FrequenciasId");
+
+                    b.Property<Guid?>("VoltagensId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FrequenciasId");
+
+                    b.HasIndex("VoltagensId");
 
                     b.ToTable("Eletricidade");
                 });
@@ -36,13 +44,9 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("EletricidadeId");
-
                     b.Property<string>("FrequenciaValor");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EletricidadeId");
 
                     b.ToTable("EletricidadeFrequencia");
                 });
@@ -52,13 +56,9 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("EletricidadeId");
-
-                    b.Property<int>("NumeroVoltagem");
+                    b.Property<string>("NumeroVoltagem");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EletricidadeId");
 
                     b.ToTable("EletricidadeVoltagem");
                 });
@@ -75,8 +75,6 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.Property<Guid?>("PaisId");
 
                     b.Property<double>("Porcentagem");
-
-                    b.Property<string>("Simbolo");
 
                     b.HasKey("Id");
 
@@ -96,17 +94,17 @@ namespace CountriesGo.Infrastructure.Migrations
 
                     b.Property<string>("FusoHorario");
 
-                    b.Property<long>("Latitude");
+                    b.Property<string>("Latitude");
 
                     b.Property<Guid?>("LocalizacaoPaisId");
 
-                    b.Property<long>("Longitude");
+                    b.Property<string>("Longitude");
 
                     b.Property<string>("Observacao");
 
                     b.Property<string>("RegiaoContinental");
 
-                    b.Property<int>("Zoom");
+                    b.Property<string>("Zoom");
 
                     b.HasKey("Id");
 
@@ -142,11 +140,13 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime?>("CreationTime");
+
                     b.Property<Guid?>("EletricidadeId");
 
                     b.Property<string>("ImagemBandeira");
 
-                    b.Property<DateTime>("LastTimeUpdated");
+                    b.Property<DateTime?>("LastTimeUpdated");
 
                     b.Property<Guid?>("LocalizacaoId");
 
@@ -283,18 +283,15 @@ namespace CountriesGo.Infrastructure.Migrations
                     b.ToTable("Vacinas");
                 });
 
-            modelBuilder.Entity("CountriesGo.Domain.Entities.EletricidadeFrequencia", b =>
+            modelBuilder.Entity("CountriesGo.Domain.Entities.Eletricidade", b =>
                 {
-                    b.HasOne("CountriesGo.Domain.Entities.Eletricidade")
-                        .WithMany("Frequencias")
-                        .HasForeignKey("EletricidadeId");
-                });
+                    b.HasOne("CountriesGo.Domain.Entities.EletricidadeFrequencia", "Frequencias")
+                        .WithMany()
+                        .HasForeignKey("FrequenciasId");
 
-            modelBuilder.Entity("CountriesGo.Domain.Entities.EletricidadeVoltagem", b =>
-                {
-                    b.HasOne("CountriesGo.Domain.Entities.Eletricidade")
-                        .WithMany("Voltagens")
-                        .HasForeignKey("EletricidadeId");
+                    b.HasOne("CountriesGo.Domain.Entities.EletricidadeVoltagem", "Voltagens")
+                        .WithMany()
+                        .HasForeignKey("VoltagensId");
                 });
 
             modelBuilder.Entity("CountriesGo.Domain.Entities.Linguagem", b =>

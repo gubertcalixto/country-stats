@@ -1,41 +1,28 @@
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using CountriesGo.Domain.Entities;
-using CountriesGo.Domain.Events;
-using CountriesGo.Infrastructure;
 using CountriesGo.Reading.APIRequesters;
-using CountriesGo.Reading.Classes.TravelBriefing;
-using Rebus.Handlers;
 
 namespace CountriesGo.Treatment.Handlers
 {
-    public class CountryIoHandler: IHandleMessages<UpdateCountryEvent>
+    public static class CountryIoHandler
     {
-        private readonly DefaultContext _context;
-
-        public CountryIoHandler(DefaultContext context)
-        {
-            _context = context;
-        }
-
-        private Task GetCountryCapital(string countryIso2)
+        public static string GetCountryCapital(string countryIso2)
         {
             // Verificações para que não haja requisições inválidas
-            if (countryIso2 == null) return Task.CompletedTask;
-            // http://country.io/capital.json
+            if (countryIso2 == null) return null;
             // Chama a camada de leitura para buscar o Pais
             var countryCapital = CountryIoReader.GetCountryCapital(countryIso2).Result;
-            if(countryCapital == null) return Task.CompletedTask;
+            if(countryCapital == null) return null;
             // Chama o método de tratamento
-            return Task.FromResult(countryCapital);
+            return countryCapital;
         }
 
-        public Task Handle(UpdateCountryEvent countryEvent)
+        public static void Treat(string capital, Pais originalCountry, out Pais country)
         {
-            // O Tratador de UpdateCountryEvent chama o método de atualizar o Buscar Capital de Pais
-            GetCountryCapital(countryEvent.CountryIso2);
-            return Task.CompletedTask;
+            country = originalCountry;
+            if (country.Localizacao == null)
+                country.Localizacao = new LocalizacaoPais();
+            country.Localizacao.Capital = capital;
         }
     }
 }

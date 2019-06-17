@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CountriesGo.Domain.Utils;
 using CountriesGo.Reading.Classes.CountryIo;
-using CountriesGo.Reading.Classes.TravelBriefing;
 using Newtonsoft.Json;
 
 namespace CountriesGo.Reading.APIRequesters
