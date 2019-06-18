@@ -1,13 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 using CountriesGo.Domain.Entities;
-using CountriesGo.Infrastructure;
 using CountriesGo.Reading.APIRequesters;
 using CountriesGo.Reading.Classes.TravelBriefing;
-using Rebus.Bus;
 
 namespace CountriesGo.Treatment.Handlers
 {

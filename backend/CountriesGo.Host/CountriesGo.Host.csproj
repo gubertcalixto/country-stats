@@ -21,8 +21,4 @@
       <ProjectReference Include="..\CountriesGo.Treatment\CountriesGo.Treatment.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Classes" />
-    </ItemGroup>
-
 </Project>

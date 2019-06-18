@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CountriesGo.Domain.Dtos;
 using CountriesGo.Host.Dtos;
 
 namespace CountriesGo.Host.Interfaces
@@ -8,6 +9,6 @@ namespace CountriesGo.Host.Interfaces
     {
         List<PaisView> GetAll(GetAllPaisRequest request);
         
-        Task<PaisView> Get(GetCountryFilterInput filterInput);
+        Task<PaisView> Get(CountryToSearch filterInput);
     }
 }

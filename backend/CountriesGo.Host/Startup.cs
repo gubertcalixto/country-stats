@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using AutoMapper;
+﻿using AutoMapper;
 using CountriesGo.Domain.Events;
+using CountriesGo.Host.Seeder;
 using CountriesGo.Infrastructure;
 using CountriesGo.Treatment;
-using CountriesGo.Treatment.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +28,8 @@ namespace CountriesGo.Host
             // TODO ADD AUTHENTICATION IF THERE'S LOGIN
             //services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme).AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             
-            
             // Register handlers 
-            services
-                .AutoRegisterHandlersFromAssemblyOf<DatabaseInteractor>();
+            services.AutoRegisterHandlersFromAssemblyOf<DatabaseInteractor>();
 
             // Configure and register Rebus
             services.AddRebus(configure => configure
@@ -50,9 +47,7 @@ namespace CountriesGo.Host
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             
             app.ApplicationServices.UseRebus();
 
@@ -67,6 +62,9 @@ namespace CountriesGo.Host
 
             // TODO ADD AUTHENTICATION IF THERE'S LOGIN
             //app.UseAuthentication();
+
+            // TODO HANGFIRE TO SEEDER
+            //new DbSeeder().StartSeeding();
         }
     }
 }

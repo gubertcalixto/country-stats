@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using CountriesGo.Domain.Dtos;
 using CountriesGo.Domain.Entities;
 using CountriesGo.Reading.APIRequesters;
 
@@ -6,6 +8,10 @@ namespace CountriesGo.Treatment.Handlers
 {
     public static class CountryIoHandler
     {
+        public static Task<List<CountryToSearch>> GetCountriesList()
+        {
+            return CountryIoReader.GetCountriesList();
+        }
         public static string GetCountryCapital(string countryIso2)
         {
             // Verificações para que não haja requisições inválidas

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CountriesGo.Domain.Dtos;
 using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Events;
 using CountriesGo.Domain.Utils;
@@ -10,6 +11,7 @@ using CountriesGo.Host.Dtos;
 using CountriesGo.Host.Interfaces;
 using CountriesGo.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rebus.Bus;
 
 namespace CountriesGo.Host.Controllers
@@ -33,12 +35,12 @@ namespace CountriesGo.Host.Controllers
                 .Skip(request.SkipCount).Take(request.MaxResult)
                 .OrderBy(p => UtilsResources.GetPropValue(p, request.OrderByField) ?? p.Nome)
                 .ToList();
-            
-            throw new System.NotImplementedException();
+            var countriesMapped = Mapper.Map<List<PaisView>>(paisList);
+            return countriesMapped;
         }
 
         [HttpGet]
-        public Task<PaisView> Get(GetCountryFilterInput filterInput)
+        public Task<PaisView> Get(CountryToSearch filterInput)
         {
             // Faz a requisição ao Banco
             var dataBaseCountry = GetCountryInDatabase(filterInput);
@@ -46,7 +48,7 @@ namespace CountriesGo.Host.Controllers
             if (dataBaseCountry == null || !DatabaseConfig.IsNotUpdated(dataBaseCountry.CreationTime,dataBaseCountry.LastTimeUpdated))
             {
                 // Envia para a camada de tratamento através do padrão Observable
-                _bus.Send(new UpdateCountryEvent(filterInput.NameFilter, filterInput.SiglaFilter)).Wait();
+                _bus.Send(new UpdateCountryEvent(filterInput.Name, filterInput.Sigla)).Wait();
                 dataBaseCountry = GetCountryInDatabase(filterInput);
             }
             // Retorna para o FrontEnd o resultado
@@ -54,11 +56,22 @@ namespace CountriesGo.Host.Controllers
             return Task.FromResult(countryMapped);
         }
 
-        private Pais GetCountryInDatabase(GetCountryFilterInput filterInput)
+        private Pais GetCountryInDatabase(CountryToSearch filterInput)
         {
-            return _context.Paises.FirstOrDefault(ct => ct.Nome == filterInput.NameFilter||
-                                                        ct.SiglaPais2Digitos == filterInput.SiglaFilter ||
-                                                        ct.SiglaPais3Digitos == filterInput.SiglaFilter);
+            return _context.Paises
+                .Include(ct => ct.Eletricidade)
+                .Include(ct => ct.Eletricidade.Frequencias)
+                .Include(ct => ct.Eletricidade.Voltagens)
+                .Include(ct => ct.Eletricidade.PlugsTomadas)
+                .Include(ct => ct.Linguagens)
+                .Include(ct => ct.Localizacao)
+                .Include(ct => ct.Localizacao.PaisesVizinhos)
+                .Include(ct => ct.Moeda)
+                .Include(ct => ct.Telefone)
+                .Include(ct => ct.Vacina)
+                .FirstOrDefault(ct => ct.Nome == filterInput.Name||
+                                      ct.SiglaPais2Digitos == filterInput.Sigla ||
+                                      ct.SiglaPais3Digitos == filterInput.Sigla);
         }
     }
 }

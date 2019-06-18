@@ -2,7 +2,7 @@
 // ReSharper disable ClassNeverInstantiated.Global
 namespace CountriesGo.Reading.Classes.CountryIo
 {
-    public class CountryIoGetCapitalRequest
+    public class CountryIoSiglas
     {
         public string BD { get; set; }
         public string BE { get; set; }
