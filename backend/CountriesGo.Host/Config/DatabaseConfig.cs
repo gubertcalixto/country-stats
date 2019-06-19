@@ -5,6 +5,7 @@ namespace CountriesGo.Host.Config
     public static class DatabaseConfig
     {
         public static int TimeToUpdateOffset { get; set; } = 15;
+        public static int SeedCountriesInterval { get; set; } = 15;
 
         public static bool IsNotUpdated(DateTime? creationDate, DateTime? updateDate)
         {
