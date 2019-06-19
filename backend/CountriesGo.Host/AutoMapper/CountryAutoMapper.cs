@@ -8,8 +8,7 @@ namespace CountriesGo.Host.AutoMapper
     {
         public CountryAutoMapper()
         {
-            CreateMap<Pais, PaisView>();
-            CreateMap<PaisView, Pais>();
+            CreateMap<Pais, PaisView>().ReverseMap();
         }
     }
 }

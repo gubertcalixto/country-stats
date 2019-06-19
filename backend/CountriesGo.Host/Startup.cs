@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Events;
-using CountriesGo.Host.Seeder;
+using CountriesGo.Host.Dtos;
 using CountriesGo.Infrastructure;
 using CountriesGo.Treatment;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,7 @@ using Rebus.Routing.TypeBased;
 using Rebus.ServiceProvider;
 using Rebus.Transport.InMem;
 using Swashbuckle.AspNetCore.Swagger;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace CountriesGo.Host
 {
@@ -29,7 +31,8 @@ namespace CountriesGo.Host
             //services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme).AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             
             // Register handlers 
-            services.AutoRegisterHandlersFromAssemblyOf<DatabaseInteractor>();
+            services
+                .AutoRegisterHandlersFromAssemblyOf<DatabaseInteractor>();
 
             // Configure and register Rebus
             services.AddRebus(configure => configure
@@ -42,6 +45,10 @@ namespace CountriesGo.Host
             services.AddAutoMapper(typeof(Startup))
                 .AddCors(options => options.AddDefaultPolicy(op => op.AllowAnyOrigin().AllowCredentials().AllowAnyHeader().AllowAnyMethod()))
                 .AddSwaggerGen(c => c.SwaggerDoc("v1", new Info { Title = "CountriesGo", Version = "v1" }));
+            
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Pais, PaisView>().ReverseMap();
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -62,9 +69,6 @@ namespace CountriesGo.Host
 
             // TODO ADD AUTHENTICATION IF THERE'S LOGIN
             //app.UseAuthentication();
-
-            // TODO HANGFIRE TO SEEDER
-            //new DbSeeder().StartSeeding();
         }
     }
 }

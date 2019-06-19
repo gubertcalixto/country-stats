@@ -21,11 +21,13 @@ namespace CountriesGo.Host.Controllers
     {
         private readonly DefaultContext _context;
         private readonly IBus _bus;
+        private readonly IMapper _mapper;
 
-        public CountryController(DefaultContext context, IBus bus)
+        public CountryController(DefaultContext context, IBus bus, IMapper mapper)
         {
             _context = context;
             _bus = bus;
+            _mapper = mapper;
         }
         
         [HttpGet]
@@ -35,7 +37,7 @@ namespace CountriesGo.Host.Controllers
                 .Skip(request.SkipCount).Take(request.MaxResult)
                 .OrderBy(p => UtilsResources.GetPropValue(p, request.OrderByField) ?? p.Nome)
                 .ToList();
-            var countriesMapped = Mapper.Map<List<PaisView>>(paisList);
+            var countriesMapped = _mapper.Map<List<PaisView>>(paisList);
             return countriesMapped;
         }
 
@@ -52,7 +54,7 @@ namespace CountriesGo.Host.Controllers
                 dataBaseCountry = GetCountryInDatabase(filterInput);
             }
             // Retorna para o FrontEnd o resultado
-            var countryMapped = Mapper.Map<PaisView>(dataBaseCountry);
+            var countryMapped = _mapper.Map<PaisView>(dataBaseCountry);
             return Task.FromResult(countryMapped);
         }
 
