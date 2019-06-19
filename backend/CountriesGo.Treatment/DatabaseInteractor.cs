@@ -48,10 +48,10 @@ namespace CountriesGo.Treatment
 
         private Pais GetCountryFromDb(string nome, string siglaPais2Digitos = null, string siglaPais3Digitos = null)
         {
-            return _defaultContext.Paises.DefaultIfEmpty(new Pais())
-                .FirstOrDefault(ct =>
-                    ct.Nome == nome || ct.SiglaPais2Digitos == siglaPais2Digitos ||
-                    ct.SiglaPais3Digitos == siglaPais3Digitos);
+            return _defaultContext.Paises
+                              .FirstOrDefault(ct =>
+                                  ct.Nome == nome || ct.SiglaPais2Digitos == siglaPais2Digitos ||
+                                  ct.SiglaPais3Digitos == siglaPais3Digitos) ?? new Pais();
         }
     }
 }
