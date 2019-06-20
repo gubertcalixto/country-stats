@@ -27,7 +27,7 @@ namespace CountriesGo.Host
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO ADD AUTHENTICATION IF THERE'S LOGIN
+            // TODO: ADD AUTHENTICATION IF THERE'S LOGIN
             //services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme).AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             
             // Register handlers 
@@ -67,7 +67,7 @@ namespace CountriesGo.Host
                 .UseMvc()
                 .UseCors();
 
-            // TODO ADD AUTHENTICATION IF THERE'S LOGIN
+            // TODO: ADD AUTHENTICATION IF THERE'S LOGIN
             //app.UseAuthentication();
         }
     }

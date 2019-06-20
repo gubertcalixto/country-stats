@@ -7,6 +7,7 @@ namespace CountriesGo.Infrastructure
     {
         #region Paises
         public DbSet<Pais> Paises { get; set; }
+        public DbSet<CountryBase> ListaPaises { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
         public DbSet<LocalizacaoPais> Localizacoes { get; set; }
         public DbSet<Linguagem> Linguagens { get; set; }
@@ -23,7 +24,7 @@ namespace CountriesGo.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                $@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CountriesGo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CountriesGo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
     }
 }

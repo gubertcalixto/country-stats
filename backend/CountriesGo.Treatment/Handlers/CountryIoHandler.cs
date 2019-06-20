@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CountriesGo.Domain.Dtos;
 using CountriesGo.Domain.Entities;
 using CountriesGo.Reading.APIRequesters;
 
@@ -8,7 +7,7 @@ namespace CountriesGo.Treatment.Handlers
 {
     public static class CountryIoHandler
     {
-        public static Task<List<CountryToSearch>> GetCountriesList()
+        public static Task<List<CountryBase>> GetCountriesList()
         {
             return CountryIoReader.GetCountriesList();
         }

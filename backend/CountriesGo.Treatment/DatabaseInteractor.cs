@@ -20,7 +20,7 @@ namespace CountriesGo.Treatment
 
         public Task Handle(UpdateCountryEvent countryEvent)
         {
-            var pais = GetCountryFromDb(countryEvent.CountryName, countryEvent.CountryIso2);
+            var pais = GetCountryFromDb(countryEvent.CountryName, countryEvent.CountryIso2) ?? new Pais();
             // TravelBriefingHandler
             var travelBriefingCountry = TravelBriefingHandler.GetCountry(countryEvent.CountryName);
             if (travelBriefingCountry != null)
@@ -51,7 +51,7 @@ namespace CountriesGo.Treatment
             return _defaultContext.Paises
                               .FirstOrDefault(ct =>
                                   ct.Nome == nome || ct.SiglaPais2Digitos == siglaPais2Digitos ||
-                                  ct.SiglaPais3Digitos == siglaPais3Digitos) ?? new Pais();
+                                  ct.SiglaPais3Digitos == siglaPais3Digitos);
         }
     }
 }

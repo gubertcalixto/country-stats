@@ -3,17 +3,18 @@ using System;
 namespace CountriesGo.Host.Config
 {
     public static class DatabaseConfig
-    {
-        public static int TimeToUpdateOffset { get; set; } = 15;
-        public static int SeedCountriesInterval { get; set; } = 15;
+    { 
+        private static int TimeToUpdateOffset { get; } = 15; // In Days
+        public static int SeedCountriesInterval { get; } = 5 * 60; // In Seconds
+        public static int DefaultMaxCount { get; } = 10;
 
-        public static bool IsNotUpdated(DateTime? creationDate, DateTime? updateDate)
+        public static bool IsCountryNotUpdated(DateTime? creationDate, DateTime? updateDate)
         {
             if (creationDate == null)
                 return true;
             if (updateDate == null)
-                return DateTime.Now.AddDays(TimeToUpdateOffset) > creationDate.Value;
-            return DateTime.Now.AddDays(TimeToUpdateOffset) > updateDate.Value;
+                return DateTime.Now.AddDays(TimeToUpdateOffset) < creationDate.Value;
+            return DateTime.Now.AddDays(TimeToUpdateOffset) < updateDate.Value;
         }
     }
 }

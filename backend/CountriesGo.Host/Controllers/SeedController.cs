@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CountriesGo.Domain.Dtos;
+using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Events;
 using CountriesGo.Host.Config;
 using CountriesGo.Infrastructure;
@@ -12,7 +12,7 @@ using Rebus.Bus;
 
 namespace CountriesGo.Host.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("/Seed")]
     public class SeedController: ControllerBase
     {
         private readonly DefaultContext _context;
@@ -25,36 +25,59 @@ namespace CountriesGo.Host.Controllers
         }
 
         [HttpGet]
-        public Task Seed()
+        public async Task Seed()
         {
-            SeedCountries();
-            return Task.CompletedTask;
+            await SeedCountries();
         }
-        private async void SeedCountries()
+        private async Task SeedCountries()
         {
-            if (_context.Paises.Any()) return;
+            var countriesList = _context.ListaPaises.ToList();
+            if (countriesList.Count <= 0)
+            {
+                countriesList = await CountryIoHandler.GetCountriesList();
+                foreach (var countryInList in countriesList)
+                {
+                    _context.ListaPaises.Add(new CountryBase
+                    {
+                        CountryName = countryInList.CountryName,
+                        CountryIso2 = countryInList.CountryIso2
+                    });
+                }
+                _context.SaveChanges();
+            }
             
             var threadList = new List<Thread>(); 
-            var countriesList = await CountryIoHandler.GetCountriesList();
-            foreach (var countryToSearch in countriesList)
+            foreach (var countryInList in countriesList)
             {
-                threadList.Add(new Thread( () => SeedCountry(countryToSearch)));
+                if(CheckIfShouldUpdateCountry(countryInList))
+                    threadList.Add(new Thread( () => SeedCountry(countryInList)));
             }
             var tList = new Thread(() =>
             {
                 foreach (var thread in threadList)
                 {
                     thread.Start();
-                    // Sleep to avoid DDOS Attack
+                    // Sleep to avoid DDOS Attack to API
                     Thread.Sleep(DatabaseConfig.SeedCountriesInterval * 1000);
                 }
             });
             tList.Start();
         }
 
-        private void SeedCountry(CountryToSearch countryToSearch)
+        private bool CheckIfShouldUpdateCountry(CountryBase countryInList)
         {
-            _bus.Send(new UpdateCountryEvent(countryToSearch.Name, countryToSearch.Sigla));
+        // Get country from DB if exists and is not updated
+            var country = _context.Paises
+                .Select(p => new {p.SiglaPais2Digitos, p.CreationTime, p.LastTimeUpdated})
+                .FirstOrDefault(p => p.SiglaPais2Digitos == countryInList.CountryIso2);
+            // IF NULL = NOT IN DB
+            // ELSE IF IS NOT UPDATED = UPDATE
+            return country == null || DatabaseConfig.IsCountryNotUpdated(country.CreationTime, country.LastTimeUpdated);
+        }
+
+        private void SeedCountry(CountryBase countryBase)
+        {
+            _bus.Send(new UpdateCountryEvent(countryBase.CountryName, countryBase.CountryIso2));
         }
         
     }

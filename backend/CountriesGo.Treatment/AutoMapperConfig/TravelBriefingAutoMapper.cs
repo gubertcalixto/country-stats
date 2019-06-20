@@ -21,19 +21,11 @@ namespace CountriesGo.Treatment.AutoMapperConfig
                 .ForMember(x => x.Localizacao.Zoom, op => op.MapFrom(e => e.Maps.Zoom))
                 .ForMember(x => x.Localizacao.Continente, op => op.MapFrom(e => e.Names.Continent))
                 .ForMember(x => x.Localizacao.FusoHorario, op => op.MapFrom(e => e.Timezone.Name))
-                // TODO LANGUAGE
+                // TODO: LANGUAGE
                 // ELECTRICITY
                 .ForMember(x => x.Eletricidade.Frequencias, op => op.MapFrom(e => e.Electricity))
                 .ForMember(x => x.Eletricidade.Voltagens, op => op.MapFrom(e => e.Electricity))
                 .ForMember(x => x.Nome, op => op.MapFrom(e => e.Names.Name));
-
-
-//            CreateMap<TBElectricity, EletricidadeFrequencia>()
-//                .ForMember(x => x.FrequenciaValor, op => op.MapFrom(e => e.Frequency)).ReverseMap();
-//            CreateMap<TBElectricity, EletricidadeVoltagem>()
-//                .ForMember(x => x.NumeroVoltagem, op => op.MapFrom(e => e.Voltage)).ReverseMap();
-//            CreateMap<TBElectricity, PlugTomada>()
-//                .ForMember(x => x.TipoTomada, op => op.MapFrom(e => e.Plugs)).ReverseMap();
         }
     }
 }

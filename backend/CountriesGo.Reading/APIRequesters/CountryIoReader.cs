@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CountriesGo.Domain.Dtos;
+using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Utils;
 using CountriesGo.Reading.Classes.CountryIo;
 using Newtonsoft.Json;
@@ -14,7 +14,7 @@ namespace CountriesGo.Reading.APIRequesters
     {
         private static readonly HttpClient Client = new HttpClient();
 
-        public static async Task<List<CountryToSearch>> GetCountriesList()
+        public static async Task<List<CountryBase>> GetCountriesList()
         {
             const string url = "http://country.io/names.json";
             // Realiza a solicitação a API
@@ -27,7 +27,7 @@ namespace CountriesGo.Reading.APIRequesters
             var listCountries = countryNames
                 .GetType()
                 .GetProperties()
-                .Select(prop => new CountryToSearch {Name = prop.GetValue(countryNames, null).ToString(), Sigla = prop.Name})
+                .Select(prop => new CountryBase {CountryName = prop.GetValue(countryNames, null).ToString(), CountryIso2 = prop.Name})
                 .ToList();
             
             return listCountries;

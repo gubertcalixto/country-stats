@@ -7,15 +7,6 @@ namespace CountriesGo.Treatment.Handlers
 {
     public static class TravelBriefingHandler
     {
-//        public async Task GetAllCountries()
-//        {
-//            var countries = await TravelBriefingReader.GetAllCountries();
-//            foreach (var country in countries)
-//            {
-//                var countryHandled = TreatCountry(country);
-//                await CreateOrUpdateCountry(countryHandled);
-//            }
-//        }
         
         public static TravelBriefingGetRequest GetCountry(string countryName)
         {
@@ -72,7 +63,7 @@ namespace CountriesGo.Treatment.Handlers
             
             if(country.Localizacao.PaisesVizinhos == null)
                 country.Localizacao.PaisesVizinhos = new List<LocalizacaoPais>();
-            // TODO IMPLEMENT NEIGHBOR
+            // TODO: IMPLEMENT NEIGHBOR
 //            foreach (var neighbor in travelBriefingGetRequest.Neighbors)
 //            {
 //                country.Localizacao.PaisesVizinhos.Add(new LocalizacaoPais

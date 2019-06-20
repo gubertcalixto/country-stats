@@ -4,7 +4,7 @@ namespace CountriesGo.Domain.Utils
     {
         public static object GetPropValue(object src, string propName)
         {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
+            return string.IsNullOrEmpty(propName) ? null : src.GetType().GetProperty(propName).GetValue(src, null);
         }
     }
 }

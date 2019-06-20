@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CountriesGo.Domain.Dtos;
+using CountriesGo.Domain.Entities;
 using CountriesGo.Host.Dtos;
 
 namespace CountriesGo.Host.Interfaces
 {
     public interface ICountryController
     {
-        List<PaisView> GetAll(GetAllPaisRequest request);
+        List<GetAllPaisResponse> GetAll(GetAllPaisRequest request);
         
-        Task<PaisView> Get(CountryToSearch filterInput);
+        Task<PaisView> Get(CountryBase filterInput);
+        List<CountryBase> GetCountriesList();
     }
 }

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using CountriesGo.Domain.Dtos;
 using CountriesGo.Domain.Entities;
 using CountriesGo.Domain.Events;
 using CountriesGo.Domain.Utils;
@@ -31,26 +30,33 @@ namespace CountriesGo.Host.Controllers
         }
         
         [HttpGet]
-        public List<PaisView> GetAll(GetAllPaisRequest request)
+        public List<GetAllPaisResponse> GetAll(GetAllPaisRequest request)
         {
-            var paisList = _context.Paises
-                .Skip(request.SkipCount).Take(request.MaxResult)
-                .OrderBy(p => UtilsResources.GetPropValue(p, request.OrderByField) ?? p.Nome)
-                .ToList();
-            var countriesMapped = _mapper.Map<List<PaisView>>(paisList);
+            var maxCount = request.MaxResult == 0 ? DatabaseConfig.DefaultMaxCount : request.MaxResult;
+            // Pega todos do BD
+            var paisListQuery = _context.Paises
+                .Skip(request.SkipCount).Take(maxCount)
+                .OrderBy(p => UtilsResources.GetPropValue(p, request.OrderByField) ?? p.Nome);
+
+            // Se houver filtro por nome, adicionar a query ao DB
+            var paisList = !string.IsNullOrEmpty(request.NameFilter) ?
+                paisListQuery.Where(p => p.Nome.Contains(request.NameFilter) || p.NomeCompleto.Contains(request.NameFilter)).ToList() :
+                paisListQuery.ToList();
+            // Mapeia para GetAllPaisResponse
+            var countriesMapped = _mapper.Map<List<GetAllPaisResponse>>(paisList);
             return countriesMapped;
         }
 
         [HttpGet]
-        public Task<PaisView> Get(CountryToSearch filterInput)
+        public Task<PaisView> Get(CountryBase filterInput)
         {
             // Faz a requisição ao Banco
             var dataBaseCountry = GetCountryInDatabase(filterInput);
             // Caso não exista ou esteja desatualizado, atualize no banco
-            if (dataBaseCountry == null || !DatabaseConfig.IsNotUpdated(dataBaseCountry.CreationTime,dataBaseCountry.LastTimeUpdated))
+            if (dataBaseCountry == null || !DatabaseConfig.IsCountryNotUpdated(dataBaseCountry.CreationTime, dataBaseCountry.LastTimeUpdated))
             {
                 // Envia para a camada de tratamento através do padrão Observable
-                _bus.Send(new UpdateCountryEvent(filterInput.Name, filterInput.Sigla)).Wait();
+                _bus.Send(new UpdateCountryEvent(filterInput.CountryName, filterInput.CountryIso2)).Wait();
                 dataBaseCountry = GetCountryInDatabase(filterInput);
             }
             // Retorna para o FrontEnd o resultado
@@ -58,7 +64,15 @@ namespace CountriesGo.Host.Controllers
             return Task.FromResult(countryMapped);
         }
 
-        private Pais GetCountryInDatabase(CountryToSearch filterInput)
+        
+        [HttpGet]
+        public List<CountryBase> GetCountriesList()
+        {
+            // Pega todos do BD
+            return _context.ListaPaises.ToList();
+        }
+        
+        private Pais GetCountryInDatabase(CountryBase filterInput)
         {
             return _context.Paises
                 .Include(ct => ct.Eletricidade)
@@ -71,9 +85,8 @@ namespace CountriesGo.Host.Controllers
                 .Include(ct => ct.Moeda)
                 .Include(ct => ct.Telefone)
                 .Include(ct => ct.Vacina)
-                .FirstOrDefault(ct => ct.Nome == filterInput.Name||
-                                      ct.SiglaPais2Digitos == filterInput.Sigla ||
-                                      ct.SiglaPais3Digitos == filterInput.Sigla);
+                .FirstOrDefault(ct => ct.Nome == filterInput.CountryName||
+                                      ct.SiglaPais2Digitos == filterInput.CountryIso2);
         }
     }
 }
