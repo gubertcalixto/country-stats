@@ -5,7 +5,7 @@
         </a>
         <h5 class="ml-12 logo-name">{{l('Cgo') | uppercase}}</h5>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center" class="text-center" fxFlex="100">
+    <div fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="center center" class="text-center" fxFlex="100">
         <a [title]="l('Facebook Page')" href="https://www.facebook.com/cgo-official" target="_blank" class="mx-4">
             <img class="social-img-filter" [alt]="l('Facebook Page')" src="/assets/images/facebook.svg" />
         </a>
@@ -16,7 +16,7 @@
             <img class="social-img-filter" [alt]="l('Twitter Page')" src="assets/images/twitter.svg" />
         </a>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center" class="text-center" fxFlex="100">
+    <div fxShow fxHide.lt-md fxLayout="row" fxLayoutAlign="center center" class="text-center" fxFlex="100">
         <a href="#" class="mx-8">
             {{l('legal') | uppercase}}
         </a>
