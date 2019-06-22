@@ -8,9 +8,11 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { CountryBannerComponent } from './country-banner/country-banner.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { CountriesListComponent } from './countries-list/countries-list.component';
+import { CountriesListItemComponent } from './countries-list/countries-list-item/countries-list-item.component';
 
 @NgModule({
-  declarations: [HomeComponent, CountryBannerComponent],
+  declarations: [HomeComponent, CountryBannerComponent, CountriesListComponent, CountriesListItemComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
