@@ -24,6 +24,7 @@
     "@angular/router": "~8.0.1",
     "@asymmetrik/ngx-leaflet": "^5.0.2",
     "@swimlane/ngx-charts": "^12.0.1",
+    "flag-icon-css": "^3.3.0",
     "leaflet": "^1.5.1",
     "moment": "^2.24.0",
     "nswag": "^13.0.2",

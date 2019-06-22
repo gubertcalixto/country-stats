@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
               "src/assets/css/basic-style.css",
               "node_modules/leaflet/dist/leaflet.css"
             ],
@@ -91,6 +92,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
               "src/assets/css/basic-style.css",
               "node_modules/leaflet/dist/leaflet.css"
             ],
