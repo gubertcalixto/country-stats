@@ -7,11 +7,12 @@
           <input matInput [placeholder]="l('Filtro de Pais')" formControlName="countrySelect"
             [matAutocomplete]="countryAutocomplete">
           <mat-autocomplete #countryAutocomplete="matAutocomplete">
-            <mat-option *ngFor="let country of countriesList" [value]="country.countryName">
-              <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.countryName">
+            <mat-option *ngFor="let country of filteredCountriesList" [value]="country.countryName">
+              <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.countryName"
+                style="max-height: 1.333em;">
               <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-'+ country.countryIso2.toLowerCase()">
               </h2>
-              <span>{{country.countryName}}</span>
+              <span style="margin-left: 5px;">{{country.countryName}}</span>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
