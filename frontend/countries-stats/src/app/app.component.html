@@ -27,13 +27,13 @@
             </div>
         </div>
     </mat-drawer>
-    <mat-drawer-content fxFlex="100" fxLayout="column" class="py-8">
+    <mat-drawer-content fxFlex="100" fxLayout="column" class="pt-8">
         <cs-header fxFlex="initial" (sidebarToggle)="drawer.toggle()"></cs-header>
         <div fxLayout="column" fxFlex="auto" class="overflow-y-auto">
             <div fxFlex="auto" class="overflow-y-auto" style="height:fit-content;">
                 <router-outlet></router-outlet>
             </div>
-            <cs-footer fxFlex="initial">
+            <cs-footer style="padding: 2px 0 2px 0;" fxFlex="initial">
             </cs-footer>
         </div>
     </mat-drawer-content>
