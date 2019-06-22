@@ -1,11 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule, MatSidenavModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSidenavModule
+} from '@angular/material';
 
 import { WidgetsModule } from '../../widgets/widgets.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [HomeComponent],
@@ -16,7 +24,11 @@ import { HomeComponent } from './home.component';
     MatButtonModule,
     MatIconModule,
     WidgetsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule {

@@ -9,10 +9,23 @@
       <cs-widgets-settings></cs-widgets-settings>
     </div>
   </mat-drawer>
-  <!--  -->
   <mat-drawer-content fxFlex="100" fxLayout="column" class="p-8">
-    <div fxFlex="100" fxLayoutGap="10px" class="overflow-x-hidden overflow-y-auto">
-      <cs-map-widget></cs-map-widget>
+    <div fxLayout="column" fxFlex="100" fxLayoutGap="10px" class="overflow-x-hidden overflow-y-auto">
+      <div fxFlex="100" fxLayoutAlign="flex-end center">
+        <form [formGroup]="selectCountryForm">
+          <mat-form-field>
+            <input matInput placeholder="Pais Selecionado" formControlName="countrySelect" [matAutocomplete]="countryAutocomplete">
+            <mat-autocomplete #countryAutocomplete="matAutocomplete">
+              <mat-option *ngFor="let country of countriesList" [value]="country.countryName">
+                <img [src]="country.imagemBandeira" [alt]="country.countryName" >
+                <span>{{country.countryName}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <h2 *ngIf="currentCountry && currentCountry.nome">Você está no: {{currentCountry.nome}}</h2>
+      <cs-map-widget [mapCoordinates]=""></cs-map-widget>
       <cs-country-stats-summary></cs-country-stats-summary>
       <cs-country-vaccination></cs-country-vaccination>
     </div>
