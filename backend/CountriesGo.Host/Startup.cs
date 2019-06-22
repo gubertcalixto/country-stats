@@ -40,10 +40,11 @@ namespace CountriesGo.Host
                 .Routing(r => r.TypeBased().MapAssemblyOf<UpdateCountryEvent>("CountryEvents"))
             );
 
+            services.AddCors(options =>
+                options.AddDefaultPolicy(op => op.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.AddMvc();
             services.AddDbContext<DefaultContext>();
             services.AddAutoMapper(typeof(Startup))
-                .AddCors(options => options.AddDefaultPolicy(op => op.AllowAnyOrigin().AllowAnyHeader()))
                 .AddSwaggerGen(c => c.SwaggerDoc("v1", new Info { Title = "CountriesGo", Version = "v1" }));
             
             var config = new MapperConfiguration(cfg => {
@@ -63,9 +64,9 @@ namespace CountriesGo.Host
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CountriesGo V1");
                     c.RoutePrefix = string.Empty;
-                }) 
-                .UseMvc()
-                .UseCors();
+                })
+                .UseCors()
+                .UseMvc();
 
             // TODO: ADD AUTHENTICATION IF THERE'S LOGIN
             //app.UseAuthentication();
