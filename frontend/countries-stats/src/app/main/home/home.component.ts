@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { storageConsts } from 'src/app/shared/consts';
 
 import { CountryBaseResponse, PaisView } from '../../../swagger/swag-proxy';
-import { storageConsts } from '../../consts/consts';
 import { CsBase } from '../../shared/cs-base.component';
 import { MapCoordinate } from '../../widgets/map-widget/map';
 import { CountryService } from '../country/country.service';
@@ -19,11 +19,11 @@ export class HomeComponent extends CsBase implements OnInit {
   countriesList: CountryBaseResponse[];
 
   constructor(private countryService: CountryService,
-              private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder) {
     super();
     this.selectCountryForm = this.formBuilder.group({
-        countrySelect: ['', Validators.required]
-      }
+      countrySelect: ['', Validators.required]
+    }
     );
   }
 
@@ -32,7 +32,7 @@ export class HomeComponent extends CsBase implements OnInit {
       this.countriesList = res;
     });
     const countryCode = localStorage.getItem(storageConsts.countryCode);
-    if(countryCode){
+    if (countryCode) {
       this.countryService.getCountry(null, countryCode).subscribe(country => {
         this.currentCountry = country;
         this.selectCountryForm.get('countrySelect').setValue(country.siglaPais2Digitos);

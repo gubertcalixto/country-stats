@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from 'util';
 
-import { storageConsts } from './consts/consts';
+import { storageConsts } from './shared/consts';
 import { CsBase } from './shared/cs-base.component';
 
 @Component({

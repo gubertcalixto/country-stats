@@ -3,17 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import {CountryService} from "./country/country.service";
-import { CountryDetailsComponent } from './country-details/country-details.component';
 
 @NgModule({
-  declarations: [MainComponent, CountryDetailsComponent],
+  declarations: [
+    MainComponent
+  ],
   imports: [
     CommonModule,
     MainRoutingModule
-  ],
-  providers: [
-    CountryService
   ],
   exports: [MainComponent]
 })

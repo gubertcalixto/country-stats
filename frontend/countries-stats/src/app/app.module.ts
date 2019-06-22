@@ -1,15 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTabsModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
+import { API_BASE_URL } from 'src/swagger/swag-proxy';
+import { SwaggerModule } from 'src/swagger/swagger-module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { API_BASE_URL } from 'src/swagger/swag-proxy';
-import { environment } from 'src/environments/environment';
-import { SwaggerModule } from 'src/swagger/swagger-module';
 import { LayoutModule } from './layout/layout.module';
-import { MatButtonModule, MatIconModule, MatListModule, MatTabsModule, MatSidenavModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [

@@ -13,14 +13,9 @@ const routes: Routes = [
         data: { preload: true, delay: 1000, title: 'home' }
       },
       {
-        path: 'country',
+        path: 'country/:id',
         loadChildren: './country/country.module#CountryModule',
         data: { preload: true, delay: 10000, title: 'country' }
-      },
-      {
-        path: 'settings',
-        loadChildren: './settings/settings.module#SettingsModule',
-        data: { preload: true, delay: 15000, title: 'settings' }
       },
       { path: '**', redirectTo: 'home' }
     ]
