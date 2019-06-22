@@ -43,7 +43,7 @@ namespace CountriesGo.Host
             services.AddMvc();
             services.AddDbContext<DefaultContext>();
             services.AddAutoMapper(typeof(Startup))
-                .AddCors(options => options.AddDefaultPolicy(op => op.AllowAnyOrigin().AllowCredentials().AllowAnyHeader().AllowAnyMethod()))
+                .AddCors(options => options.AddDefaultPolicy(op => op.AllowAnyOrigin().AllowAnyHeader()))
                 .AddSwaggerGen(c => c.SwaggerDoc("v1", new Info { Title = "CountriesGo", Version = "v1" }));
             
             var config = new MapperConfiguration(cfg => {

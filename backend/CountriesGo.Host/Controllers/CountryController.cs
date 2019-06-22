@@ -48,12 +48,15 @@ namespace CountriesGo.Host.Controllers
         }
 
         [HttpGet]
-        public Task<PaisView> Get(CountryBase filterInput)
+        public Task<PaisView> Get(CountryBaseRequest filterInput)
         {
+            // Treat request
+            filterInput.CountryIso2 = filterInput.CountryIso2.Trim(); 
+            filterInput.CountryName = filterInput.CountryName.Trim(); 
             // Faz a requisição ao Banco
             var dataBaseCountry = GetCountryInDatabase(filterInput);
             // Caso não exista ou esteja desatualizado, atualize no banco
-            if (dataBaseCountry == null || !DatabaseConfig.IsCountryNotUpdated(dataBaseCountry.CreationTime, dataBaseCountry.LastTimeUpdated))
+            if (dataBaseCountry == null || DatabaseConfig.IsCountryNotUpdated(dataBaseCountry.CreationTime, dataBaseCountry.LastTimeUpdated))
             {
                 // Envia para a camada de tratamento através do padrão Observable
                 _bus.Send(new UpdateCountryEvent(filterInput.CountryName, filterInput.CountryIso2)).Wait();
@@ -66,13 +69,23 @@ namespace CountriesGo.Host.Controllers
 
         
         [HttpGet]
-        public List<CountryBase> GetCountriesList()
+        public List<CountryBaseResponse> GetCountriesList()
         {
             // Pega todos do BD
-            return _context.ListaPaises.ToList();
+            return _context.ListaPaises
+                .Join(
+                    _context.Paises, paisLista => paisLista.CountryIso2, pais => pais.SiglaPais2Digitos,
+                    (paisLista, pais) => new CountryBaseResponse
+                    {
+                        Id = pais.Id,
+                        CountryIso2 = pais.SiglaPais2Digitos,
+                        CountryName = pais.Nome,
+                        ImagemBandeira = pais.ImagemBandeira
+                    }
+                ) .ToList();
         }
         
-        private Pais GetCountryInDatabase(CountryBase filterInput)
+        private Pais GetCountryInDatabase(CountryBaseRequest filterInput)
         {
             return _context.Paises
                 .Include(ct => ct.Eletricidade)

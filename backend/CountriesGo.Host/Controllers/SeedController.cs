@@ -39,8 +39,8 @@ namespace CountriesGo.Host.Controllers
                 {
                     _context.ListaPaises.Add(new CountryBase
                     {
-                        CountryName = countryInList.CountryName,
-                        CountryIso2 = countryInList.CountryIso2
+                        CountryName = countryInList.CountryName.Trim(),
+                        CountryIso2 = countryInList.CountryIso2.Trim()
                     });
                 }
                 _context.SaveChanges();

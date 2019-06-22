@@ -9,7 +9,7 @@ namespace CountriesGo.Host.Interfaces
     {
         List<GetAllPaisResponse> GetAll(GetAllPaisRequest request);
         
-        Task<PaisView> Get(CountryBase filterInput);
-        List<CountryBase> GetCountriesList();
+        Task<PaisView> Get(CountryBaseRequest filterInput);
+        List<CountryBaseResponse> GetCountriesList();
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Web;
 using CountriesGo.Domain.Entities;
 using CountriesGo.Reading.APIRequesters;
 using CountriesGo.Reading.Classes.TravelBriefing;
@@ -12,14 +13,16 @@ namespace CountriesGo.Treatment.Handlers
         {
             // Verificações para que não haja requisições inválidas
             if (countryName == null) return null;
+            countryName = countryName.Trim();
             // Chama a camada de leitura para buscar o Pais
-            var url = $"https://travelbriefing.org/{countryName}?format=json";
+            var url = $"https://travelbriefing.org/{HttpUtility.UrlEncode(countryName)}?format=json";
             var country = TravelBriefingReader.GetCountry(url).Result;
             return country;
         }
         public static void Treat(TravelBriefingGetRequest travelBriefingGetRequest, Pais originalCountry, out Pais country)
         {
             country = originalCountry;
+
             #region Name
             country.Nome = travelBriefingGetRequest.Names.Name;
             country.NomeCompleto = travelBriefingGetRequest.Names.Full;
