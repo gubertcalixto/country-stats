@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { featureGroup, icon, latLng, marker, Point, tileLayer } from 'leaflet';
 
-import { KorpMapCoordinate } from './map';
+import { MapCoordinate } from './map';
 
 @Component({
   selector: 'cs-map-widget',
@@ -9,7 +9,7 @@ import { KorpMapCoordinate } from './map';
   styleUrls: ['./map-widget.component.scss']
 })
 export class MapWidgetComponent implements OnInit {
-  @Input() mapCoordinates: KorpMapCoordinate[] = [];
+  @Input() mapCoordinates: MapCoordinate[] = [];
   @Input() infoTitle: string;
   leafletOptions = {
     layers: [

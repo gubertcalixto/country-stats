@@ -1,4 +1,4 @@
-export interface KorpMapCoordinate {
+export interface MapCoordinate {
     name: string,
     latitude: number,
     longitude: number,
