@@ -30,11 +30,13 @@ export class HomeComponent extends CsBase implements OnInit {
   ngOnInit() {
     this.countryService.getCountriesList().subscribe(res => {
       this.countriesList = res;
+      console.log(this.countriesList);
     });
     const countryCode = localStorage.getItem(storageConsts.countryCode);
     if (countryCode) {
       this.countryService.getCountry(null, countryCode).subscribe(country => {
         this.currentCountry = country;
+        console.log(this.currentCountry);
         this.selectCountryForm.get('countrySelect').setValue(country.siglaPais2Digitos);
         this.mapCoordinate = {
           name: country.nome,

@@ -1,3 +1,14 @@
-<p>
-  country-banner works!
-</p>
+<div fxLayout="column" fxLayoutAlign="flex-end stretch" class="banner"
+  [style.background-image]="'url('+ countryBackground?.backgroundImage + ')'">
+  <div class="credits-image" fxLayoutAlign="flex-end">
+    <a [href]="countryBackground?.urlCredit"
+      target="_blank">{{l('Foto feita por ') + countryBackground?.authorName}}</a>
+  </div>
+  <div class="card-background" fxLayout="column" fxLayoutAlign="flex-end">
+    <h2>{{l('Você está no: ') + country?.nome}}</h2>
+    <p>{{l('Veja mais informações sobre seu pais agora...')}}</p>
+    <div style="width: 100%" fxLayoutAlign="flex-end">
+      <button mat-raised-button color="primary">Visualizar</button>
+    </div>
+  </div>
+</div>
