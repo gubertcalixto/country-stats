@@ -50,6 +50,8 @@ namespace CountriesGo.Host.Controllers
         [HttpGet]
         public Task<PaisView> Get(CountryBaseRequest filterInput)
         {
+            if (string.IsNullOrEmpty(filterInput.CountryIso2) && string.IsNullOrEmpty(filterInput.CountryName))
+                return null;
             // Treat request
             filterInput.CountryIso2 = filterInput.CountryIso2.Trim(); 
             filterInput.CountryName = filterInput.CountryName.Trim(); 
