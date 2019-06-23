@@ -1,20 +1,22 @@
-<div fxLayout="column" class="details-background" [style.background-image]="country?.image || defaultBackgroundImage">
-  <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutAlign.lt-sm="center center">
-    <img src="https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
-      alt="country-logo" class="avatar">
-    <div>
-      <h1>{{l(country?.name)}}</h1>
-      <h5>{{l(country?.description)}}</h5>
-    </div>
-  </div>
-  <div>
-    <div>
-      <h6>{{country.guestsNumber}}</h6>
-      <p>{{l('visiting')}}</p>
+<ng-container *ngIf="country">
+  <div fxLayout="column" class="details-background"
+    [style.background-image]="country?.imagemBandeira || defaultBackgroundImage">
+    <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutAlign.lt-sm="center center">
+      <img src="https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
+        alt="country?.nome" class="avatar">
       <div>
-        <h6>{{country.populationNumber}}</h6>
-        <p>{{l('population')}}</p>
+        <h1>{{l(country?.nome)}}</h1>
+        <h6>{{l(country?.siglaPais2Digitos)}} | {{l(country?.siglaPais3Digitos)}}</h6>
+      </div>
+    </div>
+    <div>
+      <div>
+        <h5>{{l('População')}}:</h5>
+        <h6>{{country.quantidadePopulacao}}</h6>
       </div>
     </div>
   </div>
-</div>
+  <!-- <cs-map-widget [mapCoordinates]="mapCoordinate"></cs-map-widget>
+  <cs-country-stats-summary></cs-country-stats-summary>
+  <cs-country-vaccination></cs-country-vaccination> -->
+</ng-container>

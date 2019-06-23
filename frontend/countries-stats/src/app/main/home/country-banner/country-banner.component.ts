@@ -3,6 +3,7 @@ import { CsBase } from 'src/app/shared/cs-base.component';
 import { environment } from 'src/environments/environment';
 import { PaisView } from 'src/swagger/swag-proxy';
 import UnsplashSearch from 'unsplash-search';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'cs-country-banner',
@@ -13,7 +14,7 @@ export class CountryBannerComponent extends CsBase implements OnInit {
 
   @Input() country: PaisView;
   countryBackground: CountryBackground;
-  constructor() {
+  constructor(private router: Router) {
     super();
   }
 
@@ -40,6 +41,10 @@ export class CountryBannerComponent extends CsBase implements OnInit {
         null
       );
     }
+  }
+
+  openDetails() {
+    this.router.navigateByUrl('/country/' + this.country.siglaPais2Digitos);
   }
 }
 

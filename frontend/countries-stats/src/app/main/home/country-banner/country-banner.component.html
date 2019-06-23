@@ -8,7 +8,7 @@
     <h2>{{l('Você está no: ') + country?.nome}}</h2>
     <p>{{l('Veja mais informações sobre seu pais agora...')}}</p>
     <div style="width: 100%" fxLayoutAlign="flex-end">
-      <button mat-raised-button color="primary">Visualizar</button>
+      <button (click)="openDetails()" mat-raised-button color="primary">Visualizar</button>
     </div>
   </div>
 </div>

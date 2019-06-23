@@ -1,14 +1,14 @@
 <div fxLayout="column">
   <div fxFlex="auto" fxLayoutAlign="center" class="country-image">
     <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.countryName">
-    <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-'+ country.countryIso2.toLowerCase()">
+    <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-' + country.countryIso2.toLowerCase()">
     </h2>
   </div>
   <div class="country-content" fxFlex="initial" fxLayout="column">
     <h2>{{l(country?.countryName)}}</h2>
     <h6>{{l(country?.countryIso2)}}</h6>
     <div style="width: 100%" fxLayoutAlign="flex-end">
-      <button mat-raised-button color="primary">{{l('Visualizar')}}</button>
+      <button (click)="openDetails()" mat-raised-button color="primary">{{l('Visualizar')}}</button>
     </div>
   </div>
 </div>

@@ -13,7 +13,7 @@ const routes: Routes = [
         data: { preload: true, delay: 1000, title: 'home' }
       },
       {
-        path: 'country/:id',
+        path: 'country',
         loadChildren: './country/country.module#CountryModule',
         data: { preload: true, delay: 10000, title: 'country' }
       },

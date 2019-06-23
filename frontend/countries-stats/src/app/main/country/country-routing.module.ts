@@ -4,18 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CountryDetailsComponent } from './country-details.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      { path: '', redirectTo: 'country' },
-      { path: 'country', component: CountryDetailsComponent },
-      {
-        path: 'country/:id',
-        component: CountryDetailsComponent
-      },
-      { path: '', redirectTo: 'country' }
-    ]
-  },
+  { path: ':countryIso', component: CountryDetailsComponent },
+  { path: '', component: CountryDetailsComponent },
+  { path: '**', redirectTo: '' }
 
 ];
 
