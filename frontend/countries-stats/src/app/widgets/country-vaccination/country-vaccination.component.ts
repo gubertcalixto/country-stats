@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import { CsBase } from '../../shared/cs-base.component';
-import {PaisView, Vacina} from "../../../swagger/swag-proxy";
+import {Vacina} from "../../../swagger/swag-proxy";
 
 @Component({
   selector: 'cs-country-vaccination',

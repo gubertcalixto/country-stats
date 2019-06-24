@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { featureGroup, icon, latLng, marker, Point, tileLayer } from 'leaflet';
+import { icon, latLng, marker, Point, tileLayer } from 'leaflet';
 
 import { MapCoordinate } from './map';
 
@@ -9,35 +9,32 @@ import { MapCoordinate } from './map';
   styleUrls: ['./map-widget.component.scss']
 })
 export class MapWidgetComponent implements OnInit {
-  @Input() mapCoordinates: MapCoordinate[] = [];
+  @Input() mapCoordinate: MapCoordinate;
   @Input() infoTitle: string;
   leafletOptions = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/" target="_blank">Mapbox</a>',
-
-      })], zoom: 1, center: latLng(-25.4383361, -49.3658624)
+      })], zoom: 3, center: latLng(-25.4383361, -49.3658624)
   };
   leafletLayers = [];
-  leafletFitBounds;
 
   ngOnInit() {
     this.configureLeaflet();
+    this.leafletOptions['center'] = latLng(this.mapCoordinate.latitude, this.mapCoordinate.longitude);
   }
 
   private configureLeaflet() {
     const defaultMarker = this.getMapMarker();
     this.leafletLayers = [];
-    this.mapCoordinates.forEach(coord => {
       this.leafletLayers.push(
-        marker([coord.latitude, coord.longitude], { icon: icon({ iconSize: [32, 32], iconAnchor: [32, 32], iconUrl: defaultMarker }) })
+        marker([this.mapCoordinate.latitude, this.mapCoordinate.longitude], { icon: icon({ iconSize: [32, 32], iconAnchor: [32, 32], iconUrl: defaultMarker }) })
           .bindPopup(`<div style="display: flex;flex: 1 1 100%;flex-direction: column;">
-          <span>${coord.name}</span>
+          <span>${this.mapCoordinate.name}</span>
         </div>`, { offset: new Point(-16, -32) })
-          .bindTooltip(`<span>${coord.name}</span>`, { offset: new Point(-16, -32), direction: 'top' })
+          .bindTooltip(`<span>${this.mapCoordinate.name}</span>`, { offset: new Point(-16, -32), direction: 'top' })
       );
-    });
   }
 
   getMapMarker(color: string = '#dd4a40') {

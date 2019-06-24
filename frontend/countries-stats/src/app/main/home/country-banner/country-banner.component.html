@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="flex-end stretch" class="banner"
   [style.background-image]="'url('+ countryBackground?.backgroundImage + ')'">
-  <div class="credits-image" fxLayoutAlign="flex-end">
-    <a *ngIf="countryBackground.authorName" [href]="countryBackground?.urlCredit"
-      target="_blank">{{l('Foto feita por ') + countryBackground.authorName}}</a>
+  <div *ngIf="countryBackground.authorName" class="credits-image" fxLayoutAlign="flex-end">
+    <a [href]="countryBackground?.urlCredit"
+      target="_blank">{{l('Imagem de ') + countryBackground.authorName}}</a>
   </div>
   <div class="card-background" fxLayout="column" fxLayoutAlign="flex-end">
     <h2>{{l('Você está no: ') + country?.nome}}</h2>

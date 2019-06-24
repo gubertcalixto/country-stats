@@ -1,19 +1,19 @@
 <ng-container *ngIf="country">
   <div fxLayout="column" style="padding: 0 10px 0 10px;">
-    <div class="header" fxFlex="initial">
-      <img class="header-background" [src]="backgroundImage" [alt]="country?.nome">
-      <div fxFlex="100" fxLayout="column" fxLayoutAlign="flex-end flex-start">
-        <div fxFlex="initial" fxLayoutAlign="flex-start center">
-          <div fxFlex="initial">
-            <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.countryName"
-              style="max-height: 1.333em;">
-            <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-'+ country.countryIso2.toLowerCase()">
-            </h2>
-          </div>
-          <div fxFlex="auto" fxLayout="column" style="margin-left: 10px; text-shadow: 1px 1px 1px #000000;">
-            <h1>{{l(country?.nome)}}</h1>
-            <h6>{{l(country?.siglaPais2Digitos)}} | {{l(country?.siglaPais3Digitos)}}</h6>
-          </div>
+    <div class="header" fxFlex="initial" fxLayout="column" fxLayoutAlign="flex-end flex-start" [style.background-image]="countryBackground ? ('url('+ countryBackground?.backgroundImage + ')') : ''">
+      <div fxFlex="initial" fxLayoutAlign="flex-start center" class="header-content">
+        <div fxFlex="initial">
+          <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.nome"
+               style="max-height: 1.333em;">
+          <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-'+ country.siglaPais2Digitos.toLowerCase()">
+          </h2>
+        </div>
+        <div fxFlex="auto" fxLayout="column" style="margin-left: 10px; text-shadow: 1px 1px 1px #000000;">
+          <h1>{{l(country?.nome)}}</h1>
+          <h6>{{l(country?.siglaPais2Digitos)}} | {{l(country?.siglaPais3Digitos)}}</h6>
+        </div>
+        <div *ngIf="countryBackground && countryBackground.authorName" fxFlex="initial" fxLayoutAlign="flex-end" class="credits-image">
+          <a [href]="countryBackground?.urlCredit" target="_blank">{{l('Imagem de ') + countryBackground.authorName}}</a>
         </div>
       </div>
     </div>
@@ -22,12 +22,12 @@
       <cs-country-phones class="phones-area" [phones]="country.telefone"></cs-country-phones>
       <div class="map-area">
         <h3 style="margin: 0 5px 5px 5px;">{{l('Mapa ') + country.nome}}</h3>
-        <cs-map-widget [mapCoordinates]="mapCoordinate"></cs-map-widget>
+        <cs-map-widget [mapCoordinate]="mapCoordinate"></cs-map-widget>
       </div>
       <cs-country-language class="language-area" [languages]="country.linguagens"></cs-country-language>
       <cs-country-eletricity class="eletricity-area" [eletricity]="country.eletricidade" ></cs-country-eletricity>
       <cs-country-vaccination class="vaccination-area" [countryVaccinations]="country.vacina"></cs-country-vaccination>
-<!--      <cs-country-stats-summary></cs-country-stats-summary>-->
+      <!--      <cs-country-stats-summary></cs-country-stats-summary>-->
     </div>
   </div>
 </ng-container>

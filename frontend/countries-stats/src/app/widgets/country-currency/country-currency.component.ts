@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CsBase} from "../../shared/cs-base.component";
-import {Moeda, Telefone} from "../../../swagger/swag-proxy";
+import {Moeda} from "../../../swagger/swag-proxy";
 
 @Component({
   selector: 'cs-country-currency',

@@ -3,7 +3,7 @@ import { CsBase } from 'src/app/shared/cs-base.component';
 import { environment } from 'src/environments/environment';
 import { PaisView } from 'src/swagger/swag-proxy';
 import UnsplashSearch from 'unsplash-search';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'cs-country-banner',
@@ -19,6 +19,12 @@ export class CountryBannerComponent extends CsBase implements OnInit {
   }
 
   ngOnInit() {
+    this.unsplashSearch()
+  }
+  openDetails() {
+    this.router.navigateByUrl('/country/' + this.country.siglaPais2Digitos);
+  }
+  private unsplashSearch() {
     if (environment.production) {
       const accessKey = '4fbf7a1532cb17d0b57ee994e6f40fe19e5387ee115433a7d34b1186c132a240';
       const provider = new UnsplashSearch(accessKey);
@@ -33,18 +39,13 @@ export class CountryBannerComponent extends CsBase implements OnInit {
             );
           }
         });
-    }
-    else {
+    } else {
       this.countryBackground = new CountryBackground(
         null,
         '/assets/images/country_default_background.jpg',
         null
       );
     }
-  }
-
-  openDetails() {
-    this.router.navigateByUrl('/country/' + this.country.siglaPais2Digitos);
   }
 }
 

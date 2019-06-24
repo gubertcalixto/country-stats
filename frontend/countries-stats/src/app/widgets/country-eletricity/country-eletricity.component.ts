@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CsBase} from "../../shared/cs-base.component";
-import {Eletricidade, Telefone} from "../../../swagger/swag-proxy";
+import {Eletricidade} from "../../../swagger/swag-proxy";
 
 @Component({
   selector: 'cs-country-eletricity',
