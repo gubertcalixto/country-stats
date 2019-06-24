@@ -1,0 +1,6 @@
+<mat-list>
+  <h3 mat-subheader>{{l('Linguagens: ')}}</h3>
+  <mat-list-item *ngFor="let language of languagesShowed">
+    <h3 mat-line>{{language.nome}} | {{language.porcentagem}}%</h3>
+  </mat-list-item>
+</mat-list>

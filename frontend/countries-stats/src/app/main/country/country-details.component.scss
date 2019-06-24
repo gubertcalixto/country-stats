@@ -1,0 +1,60 @@
+.header{
+  position: relative;
+  height: 25vh;
+  padding: 10px 10px 10px 10px;
+  .header-background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+.content{
+  display: grid !important;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  padding: 10px;
+  background-color: #131313;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-areas:
+    "currency language phones"
+    "eletricity map vaccination"
+    "eletricity map vaccination "
+    "eletricity map vaccination";
+}
+.content.small{
+  grid-template-columns: 100%;
+  grid-template-areas: "currency" "language" "phones" "map" "eletricity" "vaccination";
+}
+.content.medium{
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "currency language"
+    "phones map"
+    "eletricity vaccination";
+}
+.content *[class$="-area"]{
+  background-color: #303030;
+  border-radius: 5px;
+  padding: 5px;
+}
+.map-area{
+  grid-area: map;
+}
+.phones-area{
+  grid-area: phones;
+}
+.eletricity-area{
+  grid-area: eletricity;
+}
+.currency-area{
+  grid-area: currency;
+}
+.vaccination-area{
+  grid-area: vaccination;
+}
+.language-area{
+  grid-area: language;
+}

@@ -17,15 +17,13 @@ export class MapWidgetComponent implements OnInit {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/" target="_blank">Mapbox</a>',
 
-      })], zoom: 5, center: latLng(-25.4383361, -49.3658624)
+      })], zoom: 1, center: latLng(-25.4383361, -49.3658624)
   };
   leafletLayers = [];
-  leafletMarkerGroup;
   leafletFitBounds;
 
-  constructor() { }
-
   ngOnInit() {
+    this.configureLeaflet();
   }
 
   private configureLeaflet() {
@@ -35,14 +33,11 @@ export class MapWidgetComponent implements OnInit {
       this.leafletLayers.push(
         marker([coord.latitude, coord.longitude], { icon: icon({ iconSize: [32, 32], iconAnchor: [32, 32], iconUrl: defaultMarker }) })
           .bindPopup(`<div style="display: flex;flex: 1 1 100%;flex-direction: column;">
-          <span class="h4 text-bold">${this.infoTitle}:</span>
           <span>${coord.name}</span>
         </div>`, { offset: new Point(-16, -32) })
           .bindTooltip(`<span>${coord.name}</span>`, { offset: new Point(-16, -32), direction: 'top' })
       );
     });
-    this.leafletMarkerGroup = featureGroup(this.leafletLayers);
-    this.leafletFitBounds = this.leafletMarkerGroup.getBounds();
   }
 
   getMapMarker(color: string = '#dd4a40') {

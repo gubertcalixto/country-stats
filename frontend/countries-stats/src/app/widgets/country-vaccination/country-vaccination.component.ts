@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { CsBase } from '../../shared/cs-base.component';
+import {PaisView, Vacina} from "../../../swagger/swag-proxy";
 
 @Component({
   selector: 'cs-country-vaccination',
@@ -8,12 +9,12 @@ import { CsBase } from '../../shared/cs-base.component';
   styleUrls: ['./country-vaccination.component.scss']
 })
 export class CountryVaccinationComponent extends CsBase implements OnInit {
-
+  @Input() countryVaccinations: Vacina[];
 
   constructor() {
     super();
   }
-  
+
   ngOnInit() {
   }
 

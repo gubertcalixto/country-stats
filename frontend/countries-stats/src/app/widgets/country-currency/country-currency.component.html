@@ -1,0 +1,7 @@
+<mat-list>
+  <h3 mat-subheader>{{l('Moeda: ')}}</h3>
+  <mat-list-item *ngFor="let currency of currenciesShowed">
+    <span mat-list-icon>{{currency.simbolo}}</span>
+    <h4 mat-line>{{currency.nome}} | {{currency.codigo}}</h4>
+  </mat-list-item>
+</mat-list>
