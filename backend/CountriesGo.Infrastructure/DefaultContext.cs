@@ -23,8 +23,11 @@ namespace CountriesGo.Infrastructure
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CountriesGo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            const string server = "DESKTOP-K0LPR6S";
+            const string database = "CountriesGo";
+            //const string visualStudioConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CountriesGo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+            var sqlServerConnectionString = $"Server={server};Database={database};Trusted_Connection=True;";
+            optionsBuilder.UseSqlServer(sqlServerConnectionString);
         }
     }
 }
