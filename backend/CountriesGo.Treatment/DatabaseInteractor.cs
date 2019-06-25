@@ -21,9 +21,22 @@ namespace CountriesGo.Treatment
 
         public Task Handle(UpdateCountryEvent countryEvent)
         {
-            var pais = GetCountryFromDb(countryEvent.CountryName, countryEvent.CountryIso2) ?? new Pais();
+            var pais = GetCountryFromDb(countryEvent.CountryName, countryEvent.CountryIso2);
+            if (countryEvent.CountryName == null || countryEvent.CountryIso2 == null)
+            {
+                pais = GetCountryFromDbList(countryEvent.CountryName, countryEvent.CountryIso2);
+                countryEvent.CountryName = pais.Nome;
+                countryEvent.CountryIso2 = pais.SiglaPais2Digitos;
+            }
+
+            if (pais == null)
+            {
+                pais = new Pais();
+                pais.SiglaPais2Digitos = countryEvent.CountryIso2;
+                pais.Nome = countryEvent.CountryName;
+            }
+            
             var isCountryModified = false;
-            pais.SiglaPais2Digitos = countryEvent.CountryIso2;
             // TravelBriefingHandler
             var travelBriefingCountry = TravelBriefingHandler.GetCountry(countryEvent.CountryName);
             // Avoid invalid default value 
@@ -60,6 +73,19 @@ namespace CountriesGo.Treatment
                     ct.SiglaPais3Digitos == siglaPais3Digitos);
         }
 
+        private Pais GetCountryFromDbList(string nome, string siglaPais2Digitos = null)
+        {
+            var paisInList = _defaultContext.ListaPaises
+                .FirstOrDefault(ct => ct.CountryName == nome || ct.CountryIso2 == siglaPais2Digitos);
+            var paisRetorno = new Pais();
+            if (paisInList != null)
+            {
+                paisRetorno.Nome = paisInList.CountryName;
+                paisRetorno.SiglaPais2Digitos = paisInList.CountryIso2;
+            }
+            return paisRetorno;
+        }
+        
         private void CreateOrUpdateCountry(Pais country)
         {
             country.TreatCountryBeforeSave();

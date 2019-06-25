@@ -53,8 +53,8 @@ namespace CountriesGo.Host.Controllers
             if (string.IsNullOrEmpty(filterInput.CountryIso2) && string.IsNullOrEmpty(filterInput.CountryName))
                 return null;
             // Treat request
-            filterInput.CountryIso2 = filterInput.CountryIso2.Trim(); 
-            filterInput.CountryName = filterInput.CountryName.Trim(); 
+            filterInput.CountryIso2 = filterInput.CountryIso2?.Trim(); 
+            filterInput.CountryName = filterInput.CountryName?.Trim(); 
             // Faz a requisição ao Banco
             var dataBaseCountry = GetCountryInDatabase(filterInput);
             // Caso não exista ou esteja desatualizado, atualize no banco
