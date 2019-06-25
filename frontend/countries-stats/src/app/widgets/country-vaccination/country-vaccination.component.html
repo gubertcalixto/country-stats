@@ -10,8 +10,8 @@
         <mat-icon *ngIf="vaccine.riscoVacina === 0 || vaccine.riscoVacina === 1" mat-list-icon class="f-blue">info</mat-icon>
         <mat-icon *ngIf="vaccine.riscoVacina === 2 || vaccine.riscoVacina === 3" mat-list-icon class="f-orange">warning</mat-icon>
         <mat-icon *ngIf="vaccine.riscoVacina >= 4" mat-list-icon class="red">warning</mat-icon>
-        <h3 mat-line>{{l(vaccine.nome)}}</h3>
-        <p mat-line> {{l(vaccine.observacoes)}}</p>
+        <h3 mat-line>{{vaccine.nome | translate}}</h3>
+        <p mat-line> {{vaccine.observacoes | translate}}</p>
       </mat-list-option>
     </mat-selection-list>
     <h4 *ngIf="!countryVaccinations || countryVaccinations.length == 0"

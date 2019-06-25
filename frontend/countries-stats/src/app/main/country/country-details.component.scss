@@ -25,7 +25,7 @@
   grid-row-gap: 10px;
   padding: 10px;
   background-color: #131313;
-  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-columns: 33% 33% 33%;
   grid-template-areas:
     "currency language phones"
     "eletricity map vaccination"
@@ -33,11 +33,11 @@
     "eletricity map vaccination";
 }
 .content.small{
-  grid-template-columns: 100%;
+  grid-template-columns: 99%;
   grid-template-areas: "currency" "language" "phones" "map" "eletricity" "vaccination";
 }
 .content.medium{
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 49%;
   grid-template-areas:
     "currency language"
     "phones map"

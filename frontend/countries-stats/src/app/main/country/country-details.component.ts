@@ -45,6 +45,7 @@ export class CountryDetailsComponent extends CsBase implements OnInit {
     }
     this.countryService.getCountry(null, countryIso2).subscribe(result => {
       this.country = result;
+      console.log(this.country);
       this.unsplashSearch();
       this.mapCoordinate = {
         name: this.country.nome,

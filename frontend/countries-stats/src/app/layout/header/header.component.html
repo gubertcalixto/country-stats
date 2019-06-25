@@ -15,23 +15,23 @@
       </a>
     </nav>
   </div>
-  <div fxFlex="initial">
-    <ng-container *ngIf="logged">
-      <img [src]="logged.image" alt="profile">
-      <button mat-button [matMenuTriggerFor]="profileMenu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #profileMenu="matMenu">
-        <span>
-          <mat-icon>dialpad</mat-icon> {{logged.name}}
-        </span>
-        <button mat-menu-item class="mr-4">{{l('Meu Perfil')}}</button>
-        <button mat-menu-item class="ml-4">{{l('Sair')}}</button>
-      </mat-menu>
-    </ng-container>
-    <ng-container *ngIf="!logged">
-      <button mat-flat-button class="mr-4" color="primary" (click)="signin()">{{l('Sign In')}}</button>
-      <button mat-flat-button class="ml-4" (click)="signup()">{{l('Sign Up')}}</button>
-    </ng-container>
-  </div>
+<!--  <div fxFlex="initial">-->
+<!--    <ng-container *ngIf="logged">-->
+<!--      <img [src]="logged.image" alt="profile">-->
+<!--      <button mat-button [matMenuTriggerFor]="profileMenu">-->
+<!--        <mat-icon>more_vert</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #profileMenu="matMenu">-->
+<!--        <span>-->
+<!--          <mat-icon>dialpad</mat-icon> {{logged.name}}-->
+<!--        </span>-->
+<!--        <button mat-menu-item class="mr-4">{{l('Meu Perfil')}}</button>-->
+<!--        <button mat-menu-item class="ml-4">{{l('Sair')}}</button>-->
+<!--      </mat-menu>-->
+<!--    </ng-container>-->
+<!--    <ng-container *ngIf="!logged">-->
+<!--      <button mat-flat-button class="mr-4" color="primary" (click)="signin()">{{l('Sign In')}}</button>-->
+<!--      <button mat-flat-button class="ml-4" (click)="signup()">{{l('Sign Up')}}</button>-->
+<!--    </ng-container>-->
+<!--  </div>-->
 </div>

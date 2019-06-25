@@ -25,25 +25,25 @@ export class CountryPhonesComponent extends CsBase implements OnInit {
   ngOnInit() {
     this.telephones = [
       {
-        title: this.l('Telefone'),
+        title: 'phones.phone',
         description: this.phones.codigoTelefone,
         icon: 'phone',
         colorClass: 'f-green'
       },
       {
-        title: this.l('Policia'),
+        title: 'phones.police',
         description: this.phones.telefonePolicia,
         icon: 'security',
         colorClass: 'f-blue'
       },
       {
-        title: this.l('Ambulância'),
+        title: 'phones.ambulance',
         description: this.phones.telefoneAmbulancia,
         icon: 'healing',
         colorClass: 'f-orange'
       },
       {
-        title: this.l('Bombeiros'),
+        title: 'phones.firemen',
         description: this.phones.telefoneBombeiros,
         icon: 'whatshot',
         colorClass: 'f-red'

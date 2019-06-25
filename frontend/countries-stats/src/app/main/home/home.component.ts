@@ -37,13 +37,15 @@ export class HomeComponent extends CsBase implements OnInit {
     if (countryCode) {
       this.countryService.getCountry(null, countryCode).subscribe(country => {
         this.currentCountry = country;
-        console.log(this.currentCountry);
-        this.mapCoordinate = [{
-          name: country.nome,
-          fitBounds: true,
-          latitude: Number(localStorage.getItem(storageConsts.latitude)) || Number(country.localizacao.latitude),
-          longitude: Number(localStorage.getItem(storageConsts.latitude)) || Number(country.localizacao.longitude)
-        }];
+        if(country){
+          console.log(this.currentCountry);
+          this.mapCoordinate = [{
+            name: country.nome,
+            fitBounds: true,
+            latitude: Number(localStorage.getItem(storageConsts.latitude)) || Number(country.localizacao.latitude),
+            longitude: Number(localStorage.getItem(storageConsts.latitude)) || Number(country.localizacao.longitude)
+          }];
+        }
       });
     }
   }

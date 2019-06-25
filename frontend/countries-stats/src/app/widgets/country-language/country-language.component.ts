@@ -16,6 +16,9 @@ export class CountryLanguageComponent extends CsBase implements OnInit {
   };
 
   ngOnInit() {
+    this.languages.forEach(lg => {
+      lg.nome = this.keyToTranslate('languages', lg.nome);
+    });
     this.languagesShowed = this.languages.filter(c => c.oficial);
   }
 

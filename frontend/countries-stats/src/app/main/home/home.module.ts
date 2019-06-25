@@ -10,6 +10,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CountriesListComponent } from './countries-list/countries-list.component';
 import { CountriesListItemComponent } from './countries-list/countries-list-item/countries-list-item.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [HomeComponent, CountryBannerComponent, CountriesListComponent, CountriesListItemComponent],
@@ -22,7 +23,8 @@ import { CountriesListItemComponent } from './countries-list/countries-list-item
     MatAutocompleteModule,
     MatButtonModule,
     WidgetsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TranslateModule
   ]
 })
 export class HomeModule {

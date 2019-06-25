@@ -12,6 +12,7 @@ import { CountryEletricityComponent } from './country-eletricity/country-eletric
 import {FlexModule} from "@angular/flex-layout";
 import { CountryCurrencyComponent } from './country-currency/country-currency.component';
 import { CountryLanguageComponent } from './country-language/country-language.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CountryLanguageComponent } from './country-language/country-language.co
   imports: [
     CommonModule,
     LeafletModule.forRoot(),
+    TranslateModule.forChild(),
     NgxChartsModule,
     MatCardModule,
     MatIconModule,

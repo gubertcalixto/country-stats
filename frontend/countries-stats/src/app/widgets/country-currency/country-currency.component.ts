@@ -16,6 +16,9 @@ export class CountryCurrencyComponent extends CsBase implements OnInit {
   };
 
   ngOnInit() {
+    this.currencies.forEach(cr => {
+      cr.nome = this.keyToTranslate('currencies', cr.nome);
+    });
     this.currenciesShowed = this.currencies.filter(c => c.principal);
   }
 

@@ -5,6 +5,7 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
 
 import { CountryDetailsComponent } from './country-details.component';
 import { CountryRoutingModule } from './country-routing.module';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [CountryDetailsComponent],
@@ -12,7 +13,8 @@ import { CountryRoutingModule } from './country-routing.module';
     CommonModule,
     WidgetsModule,
     FlexModule,
-    CountryRoutingModule
+    CountryRoutingModule,
+    TranslateModule
   ],
   exports: [CountryDetailsComponent]
 })

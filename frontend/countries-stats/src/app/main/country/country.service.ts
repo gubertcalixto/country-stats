@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { CountryBaseResponse, CountryServiceProxy, GetAllPaisResponse, PaisView } from '../../../swagger/swag-proxy';
+import {isNullOrUndefined} from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,12 @@ export class CountryService {
     return this.countryServiceProxy.getAll(nameFilter, skipCount, maxCount, orderByField);
   }
   public getCountry(name: string, iso2: string): Observable<PaisView> {
+    if(isNullOrUndefined(name)){
+      name = undefined;
+    }
+    if(isNullOrUndefined(iso2)){
+      iso2 = undefined;
+    }
     return this.countryServiceProxy.get(name, iso2);
   }
   public getCountriesList(): Observable<CountryBaseResponse[]> {

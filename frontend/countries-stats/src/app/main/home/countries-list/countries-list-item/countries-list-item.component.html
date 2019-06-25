@@ -5,10 +5,10 @@
     </h2>
   </div>
   <div class="country-content" fxFlex="initial" fxLayout="column">
-    <h2>{{l(country?.countryName)}}</h2>
+    <h2>{{keyToTranslate('countries', country?.countryName) | translate}}</h2>
     <h6>{{l(country?.countryIso2)}}</h6>
     <div style="width: 100%" fxLayoutAlign="flex-end">
-      <button (click)="openDetails()" mat-raised-button color="primary">{{l('Visualizar')}}</button>
+      <button (click)="openDetails()" mat-raised-button color="primary">{{'common.visualize' | translate}}</button>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
@@ -17,7 +18,8 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     FlexLayoutModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    TranslateModule
   ],
   exports: [HeaderComponent, FooterComponent]
 })

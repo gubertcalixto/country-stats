@@ -9,7 +9,7 @@
           </h2>
         </div>
         <div fxFlex="auto" fxLayout="column" style="margin-left: 10px; text-shadow: 1px 1px 1px #000000;">
-          <h1>{{l(country?.nome)}}</h1>
+          <h1>{{keyToTranslate('countries', country?.nome) | translate}}</h1>
           <h6>{{l(country?.siglaPais2Digitos)}} | {{l(country?.siglaPais3Digitos)}}</h6>
         </div>
         <div *ngIf="countryBackground && countryBackground.authorName" fxFlex="initial" fxLayoutAlign="flex-end" class="credits-image">
@@ -21,7 +21,7 @@
       <cs-country-currency class="currency-area" [currencies]="country.moeda"></cs-country-currency>
       <cs-country-phones class="phones-area" [phones]="country.telefone"></cs-country-phones>
       <div class="map-area">
-        <h3 style="margin: 0 5px 5px 5px;">{{l('Mapa ') + country.nome}}</h3>
+        <h3 style="margin: 0 5px 5px 5px;">{{l('Mapa ') }} {{keyToTranslate('countries', country.nome) | translate}}</h3>
         <cs-map-widget [mapCoordinate]="mapCoordinate"></cs-map-widget>
       </div>
       <cs-country-language class="language-area" [languages]="country.linguagens"></cs-country-language>

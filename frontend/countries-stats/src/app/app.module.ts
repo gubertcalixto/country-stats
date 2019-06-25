@@ -12,6 +12,9 @@ import { SwaggerModule } from 'src/swagger/swagger-module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {pt} from "../i18n/pt";
+import {en} from "../i18n/en";
 
 
 @NgModule({
@@ -29,6 +32,7 @@ import { LayoutModule } from './layout/layout.module';
     MatButtonModule,
     LayoutModule,
     SwaggerModule,
+    TranslateModule.forRoot(),
     AppRoutingModule
   ],
   providers: [
@@ -41,4 +45,11 @@ import { LayoutModule } from './layout/layout.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(translateService: TranslateService){
+    translateService.setTranslation('pt', pt);
+    translateService.setTranslation('en', en);
+    translateService.setDefaultLang('pt');
+    translateService.use('pt');
+  }
+}

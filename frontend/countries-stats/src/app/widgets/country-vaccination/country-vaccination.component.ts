@@ -16,6 +16,10 @@ export class CountryVaccinationComponent extends CsBase implements OnInit {
   }
 
   ngOnInit() {
+    this.countryVaccinations.forEach(vc => {
+      vc.observacoes = this.keyToTranslate('vaccinations', vc.nome);
+      vc.nome = this.keyToTranslate('vaccinations.vaccinationsName', vc.nome);
+    })
   }
 
 }
