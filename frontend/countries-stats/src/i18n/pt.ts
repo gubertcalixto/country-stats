@@ -29,6 +29,7 @@ export const pt = {
     rwanda: 'Ruanda',
     serbia: 'Sérvia',
     east_timor: 'Timor Leste',
+    timor_leste: 'Timor Leste',
     reunion: 'Reunião',
     turkmenistan: 'Turcomenistão',
     tajikistan: 'Tajiquistão',
@@ -223,7 +224,8 @@ export const pt = {
     cfa_franc_bceao: 'Franco CFA BCEAO',
     convertible_mark: 'Marco conversível',
     euro: 'Euro',
-    taka: 'Taka'
+    taka: 'Taka',
+    russian_ruble: 'Rublo Russo'
   },
   vaccinations: {
     vaccinationsName: {
@@ -233,6 +235,7 @@ export const pt = {
       yellow_fever: 'Febre Amarela',
       tyfoid: 'Tifóide',
       dtp: 'Tríplice viral',
+      cholera: "Cólera"
     },
     malaria: 'A malária ocorre em algumas áreas. Proteja-se das picadas de mosquito. Precauções são pessoais. Consulte um profissional médico qualificado para determinar as ações corretas',
     hepatitis_a: 'A vacinação é recomendada para todos os viajantes para este país',
@@ -240,6 +243,7 @@ export const pt = {
     yellow_fever: 'A vacinação é recomendada para todos os viajantes para este país',
     tyfoid: 'O conselho de vacinação é pessoal. Consulte um profissional médico qualificado para determinar se a vacinação é útil para você',
     dtp: 'A vacinação é recomendada para todos os viajantes para este país',
+    cholera: "As autoridades exigem uma declaração de cólera quando você entra no país por terra"
   },
   phones: {
     phone: 'Telefone',
@@ -260,7 +264,8 @@ export const pt = {
     serbian: 'Sérvio',
     spanish: 'Espanhol',
     sudanic: 'Sudanico',
-    turkish: 'Turco'
+    turkish: 'Turco',
+    russian: 'Russo'
   },
   common: {
     visualize: 'Visualizar'

@@ -30,6 +30,7 @@ export const en = {
     rwanda: 'Rwanda',
     serbia: 'Serbia',
     east_timor: 'Timor read',
+    timor_leste: 'Timor Leste',
     reunion: 'Meeting',
     turkmenistan: 'Turkmenistan',
     tajikistan: 'Tajikistan',
@@ -224,7 +225,8 @@ export const en = {
     cfa_franc_bceao: 'CFA Franc BCEAO',
     convertible_mark: 'Convertible Mark',
     euro: 'Euro',
-    taka: 'Taka'
+    taka: 'Taka',
+    russian_ruble: 'Russian Ruble'
   },
   vaccinations: {
     vaccinationsName: {
@@ -234,6 +236,7 @@ export const en = {
       yellow_fever: 'Yellow fever',
       tyfoid: 'Tyfoid',
       dtp: 'DTP',
+      cholera: "Cholera"
     },
     malaria: 'Malaria occurs in some areas. Protect yourself from mosquito bites. Precautions are personal. Consult a qualified medical professional to determine the right actions',
     hepatitis_a: 'Vaccination is recommended for all travelers to this country',
@@ -241,6 +244,7 @@ export const en = {
     yellow_fever: 'Vaccination is recommended for all travelers to this country',
     tyfoid: 'The vaccination advice is personal. Consult a qualified medical professional to determine whether vaccination is useful for you',
     dtp: 'Vaccination is recommended for all travelers to this country',
+    cholera: "The authorities require a so-called cholera declaration when you enter the country by land"
   },
   phones: {
     phone: 'Phone',
@@ -261,7 +265,8 @@ export const en = {
     serbian: 'Serbian',
     spanish: 'Spanish',
     sudanic: 'Sudanic',
-    turkish: 'Turkish'
+    turkish: 'Turkish',
+    russian: 'Russian'
   },
   common: {
     visualize: 'Visualize'
