@@ -1,0 +1,23 @@
+<div fxFlex="100" fxLayout="column" class="p-8">
+  <div fxLayout="column" fxFlex="100" fxLayoutGap="10px" class="overflow-x-hidden overflow-y-auto">
+    <cs-country-banner *ngIf="currentCountry" [country]="currentCountry"></cs-country-banner>
+    <div fxFlex="100" fxLayoutAlign="flex-end center">
+      <form [formGroup]="selectCountryForm">
+        <mat-form-field>
+          <input matInput [placeholder]="l('Filtro de Pais')" formControlName="countrySelect"
+            [matAutocomplete]="countryAutocomplete">
+          <mat-autocomplete #countryAutocomplete="matAutocomplete">
+            <mat-option *ngFor="let country of filteredCountriesList" [value]="country.countryName">
+              <img *ngIf="country?.imagemBandeira" [src]="country.imagemBandeira" [alt]="country.countryName"
+                style="max-height: 1.333em;">
+              <h2 *ngIf="!country.imagemBandeira" [class]="'flag-icon flag-icon-'+ country.countryIso2.toLowerCase()">
+              </h2>
+              <span style="margin-left: 5px;">{{country.countryName}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <cs-countries-list [countryList]="filteredCountriesList"></cs-countries-list>
+  </div>
+</div>

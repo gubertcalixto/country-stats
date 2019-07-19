@@ -1,17 +1,19 @@
-﻿using CountriesGo.Domain.Entities.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CountriesGo.Domain.Entities
 {
-    public class LocalizacaoPais : EntityBase
+    [Table("Localizacoes")]
+    public class LocalizacaoPais: BaseEntity
     {
         public string Continente { get; set; }
         public string RegiaoContinental { get; set; }
         public string Capital { get; set; }
-        public long Latitude { get; set; }
-        public long Longitude { get; set; }
-        public int Zoom { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Zoom { get; set; }
         public string FusoHorario { get; set; }
-        public LocalizacaoPais[] PaisesVizinhos { get; set; }
+        public List<LocalizacaoPais> PaisesVizinhos { get; set; }
         public string Observacao { get; set; }
     }
 }

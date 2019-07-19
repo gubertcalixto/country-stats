@@ -1,0 +1,37 @@
+<div class="py-4 px-8" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="auto" fxLayoutAlign="space-between center">
+    <div fxFlex="initial" fxLayoutAlign="flex-start center">
+      <button (click)="onToggleSidebar()" fxShow.lt-md fxHide mat-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/" title="Home">
+        <img src="assets/images/logo.svg" alt="logo">
+      </a>
+    </div>
+    <nav mat-tab-nav-bar fxFlex="auto" fxHide.lt-md>
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+        {{l(link.label)}}
+      </a>
+    </nav>
+  </div>
+<!--  <div fxFlex="initial">-->
+<!--    <ng-container *ngIf="logged">-->
+<!--      <img [src]="logged.image" alt="profile">-->
+<!--      <button mat-button [matMenuTriggerFor]="profileMenu">-->
+<!--        <mat-icon>more_vert</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #profileMenu="matMenu">-->
+<!--        <span>-->
+<!--          <mat-icon>dialpad</mat-icon> {{logged.name}}-->
+<!--        </span>-->
+<!--        <button mat-menu-item class="mr-4">{{l('Meu Perfil')}}</button>-->
+<!--        <button mat-menu-item class="ml-4">{{l('Sair')}}</button>-->
+<!--      </mat-menu>-->
+<!--    </ng-container>-->
+<!--    <ng-container *ngIf="!logged">-->
+<!--      <button mat-flat-button class="mr-4" color="primary" (click)="signin()">{{l('Sign In')}}</button>-->
+<!--      <button mat-flat-button class="ml-4" (click)="signup()">{{l('Sign Up')}}</button>-->
+<!--    </ng-container>-->
+<!--  </div>-->
+</div>

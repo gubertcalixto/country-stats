@@ -1,18 +1,19 @@
-﻿using CountriesGo.Domain.Entities.Base;
-using CountriesGo.Domain.Enums;
-using CountriesGo.Domain.ValueObjects;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CountriesGo.Domain.Entities
 {
-    public class Usuario : EntityBase
+    [Table("Usuarios")]
+    public class Usuario: BaseEntity
     {
-        public Nome Nome { get; set; }
-        public Login Login { get; set; }
-        public Email Email { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
+        public string Email { get; set; }
         public bool EmailConfimado { get; set; }
+        public bool AcessoBloqueado { get; set; }
         public DateTime AcessoBloqueadoDataFinal { get; set; }
         public DateTime DataCriacao { get; set; }
-        public EnumStatusUsuario StatusUsuario { get; set; }
     }
 }
-

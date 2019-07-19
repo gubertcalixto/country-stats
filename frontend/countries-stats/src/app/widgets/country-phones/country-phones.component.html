@@ -1,0 +1,8 @@
+<mat-list>
+  <h3 mat-subheader>{{l('Telefones: ')}}</h3>
+  <mat-list-item *ngFor="let phone of telephones">
+    <mat-icon mat-list-icon [ngClass]="phone.colorClass">{{phone.icon}}</mat-icon>
+    <h4 mat-line>{{phone.title | translate}}</h4>
+    <p mat-line> {{phone.description}} </p>
+  </mat-list-item>
+</mat-list>

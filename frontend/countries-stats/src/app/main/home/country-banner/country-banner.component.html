@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutAlign="flex-end stretch" class="banner"
+  [style.background-image]="'url('+ countryBackground?.backgroundImage + ')'">
+  <div *ngIf="countryBackground.authorName" class="credits-image" fxLayoutAlign="flex-end">
+    <a [href]="countryBackground?.urlCredit"
+      target="_blank">{{l('Imagem de ') + countryBackground.authorName}}</a>
+  </div>
+  <div class="card-background" fxLayout="column" fxLayoutAlign="flex-end">
+    <h2>{{'countryBanner.yourAt' | translate}}{{keyToTranslate('countries', country?.nome) | translate}}</h2>
+    <p>{{'countryBanner.seeYourCountry' | translate}}</p>
+    <div style="width: 100%" fxLayoutAlign="flex-end">
+      <button (click)="openDetails()" mat-raised-button color="primary">{{'common.visualize' | translate}}</button>
+    </div>
+  </div>
+</div>
