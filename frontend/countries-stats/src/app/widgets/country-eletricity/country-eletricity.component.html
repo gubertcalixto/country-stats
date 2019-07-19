@@ -1,0 +1,18 @@
+
+<mat-list>
+  <h3 mat-subheader>{{l('Eletricidade: ')}}</h3>
+  <mat-list-item>{{l('Voltagem: ') + eletricity.voltagens.numeroVoltagem}} V</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>{{l('Frequência: ') + eletricity.frequencias.frequenciaValor}} Hz</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <h4>{{l('Tomadas: ')}}</h4>
+  </mat-list-item>
+</mat-list>
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <img style="margin: 0 5px; filter: grayscale(1);" *ngFor="let plug of eletricity.plugsTomadas"
+       [matTooltip]="l('Tipo: ' + plug.tipoTomada)"
+       [src]="plug.imagemTomada"
+       [alt]="l('Tipo: ' + plug.tipoTomada)">
+</div>
+

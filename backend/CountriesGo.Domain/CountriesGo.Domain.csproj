@@ -1,73 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2A64CDF1-99E9-4F88-A27C-FF0C85931F14}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CountriesGo.Domain</RootNamespace>
-    <AssemblyName>CountriesGo.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Arguments\Pais\ListarPaisesPorContinenteRequest.cs" />
-    <Compile Include="Arguments\Pais\PesquisaPaisesRequest.cs" />
-    <Compile Include="Arguments\Pais\ListarPaisesPorNomeRequest.cs" />
-    <Compile Include="Arguments\Usuario\AutenticarUsuarioRequest.cs" />
-    <Compile Include="Arguments\Usuario\CadastrarUsuarioRequest.cs" />
-    <Compile Include="Arguments\Usuario\UsuarioResponse.cs" />
-    <Compile Include="Entities\Base\Entitybase.cs" />
-    <Compile Include="Entities\Eletricidade.cs" />
-    <Compile Include="Entities\Linguagem.cs" />
-    <Compile Include="Entities\Localizacao.cs" />
-    <Compile Include="Entities\Moeda.cs" />
-    <Compile Include="Entities\Pais.cs" />
-    <Compile Include="Entities\Telefone.cs" />
-    <Compile Include="Entities\TentativasLogin.cs" />
-    <Compile Include="Entities\Usuario.cs" />
-    <Compile Include="Entities\Vacina.cs" />
-    <Compile Include="Enums\EnumRiscoVacina.cs" />
-    <Compile Include="Enums\EnumStatusUsuario.cs" />
-    <Compile Include="Interfaces\Arguments\IResponse.cs" />
-    <Compile Include="Interfaces\Arguments\IRequest.cs" />
-    <Compile Include="Interfaces\Services\IServiceLinguagem.cs" />
-    <Compile Include="Interfaces\Services\IServiceLocalizacao.cs" />
-    <Compile Include="Interfaces\Services\IServiceVacina.cs" />
-    <Compile Include="Interfaces\Services\IServicePais.cs" />
-    <Compile Include="Interfaces\Services\IServiceUsuario.cs" />
-    <Compile Include="Services\ServiceUsuario.cs" />
-    <Compile Include="ValueObjects\Email.cs" />
-    <Compile Include="ValueObjects\Login.cs" />
-    <Compile Include="ValueObjects\Nome.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Repositories\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
 </Project>

@@ -1,0 +1,7 @@
+<div fxFlex="row wrap" fxLayout="flex-start center">
+  <div *ngIf="countryList && countryList.length === 0" class="no-result">
+    <h2>{{l('Sem Resultados')}}</h2>
+  </div>
+  <cs-countries-list-item [fxFlex.gt-md]="100 / 4" [fxFlex.md]="100 / 2" fxFlex="100"
+    *ngFor="let country of countryList" [country]="country"></cs-countries-list-item>
+</div>

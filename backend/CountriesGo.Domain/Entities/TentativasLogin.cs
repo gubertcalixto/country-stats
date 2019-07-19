@@ -1,8 +1,10 @@
-﻿using CountriesGo.Domain.Entities.Base;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CountriesGo.Domain.Entities
 {
-    public class TentativasLogin : EntityBase
+    [Table("TentativasLogin")]
+    public class TentativasLogin: BaseEntity
     {
         public Usuario Usuario { get; set; }
         public DateTime Data { get; set; }
